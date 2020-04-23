@@ -1,0 +1,31 @@
+<%= <%= form_for @tracker do |f| %>
+    <div class="field">
+
+    <%= f.collection_select(:challenge_id, Challenge.all, :id, :name) %>
+
+    <%= f.label "Sunday"%>
+    <%= f.number_field :sunday_reps%>
+
+    <%= f.label "Monday"%>
+    <%= f.number_field :monday_reps%>
+
+    <%= f.label "Tuesday"%>
+    <%= f.number_field :tuesday_reps%>
+    
+    <%= f.label "Wednesday"%>
+    <%= f.number_field :wednesday_reps%>
+    
+    <%= f.label "Thursday"%>
+    <%= f.number_field :thursday_reps%>
+    
+    <%= f.label "Friday"%>
+    <%= f.number_field :friday_reps%>
+
+    <%= f.label "Saturday"%>
+    <%= f.number_field :saturday_reps%>
+    </div>
+
+    <div class="actions">
+    <%= f.submit %>
+    </div>
+<% end %>

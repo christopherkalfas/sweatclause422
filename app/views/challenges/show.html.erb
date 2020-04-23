@@ -1,0 +1,43 @@
+<h1><%= @challenge.name %></h1>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @challenge.activity_name %>
+</p>
+
+<p>
+<strong>Goal Activity Reps</strong>
+<%= @challenge.activity_reps %>
+</p>
+
+<p>
+  <strong>Challenge Start-Date: </strong>
+  <%= @challenge.start_date %>
+</p>
+
+<p>
+  <strong>Challenge End-Date: </strong>
+  <%= @challenge.end_date %>
+</p>
+
+<p>
+  <strong>Challenge Group: </strong>
+  <%= link_to(@challenge.group.name, group_path(@challenge.group)) %>
+<ul>
+<strong>Particpating Members: </strong> 
+  <% @challenge.group.users.each do |user| %>
+    <li><%= link_to(user.name, user_path(user)) %></li>
+  <% end %>
+</ul>
+</p>
+<br>
+<br>
+
+
+
+
+
+<h2><%= link_to('All challenges', challenges_path) %> |
+
+
+<%= link_to("Edit", edit_challenge_path(@challenge)) %></h2>

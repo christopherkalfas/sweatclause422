@@ -1,0 +1,24 @@
+<%= form_for(@user) do |form| %>
+  
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password %>
+  </div>
+  
+<%= form.label "Join A Group" %>
+  <%= form.collection_select(:group_id, Group.all, :id, :name) %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
