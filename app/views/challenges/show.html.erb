@@ -46,6 +46,8 @@
     <td>Thursday</td>
     <td>Friday</td>
     <td>Saturday</td>
+    <td>Total</td>
+    <td>Add Reps</td>
   </tr>
   <% @challenge.trackers.each do |track| %>
     <tr>
@@ -57,10 +59,12 @@
         <td><%= track.thursday_reps%></td>
         <td><%= track.friday_reps%></td>
         <td><%= track.saturday_reps%></td>
+        <td><%= track.total_reps%></td>
+        <td><%= link_to  "+", edit_tracker_path(track.id) %></td>
   </tr>
-<h2><%= link_to  "Update Tracker", edit_tracker_path(track.id) %></h2>
   <% end %>
 </table>
+<p><%=link_to "Update", edit_tracker_path()%></p>
 
 
 
