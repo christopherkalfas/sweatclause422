@@ -5,4 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Challenge.destroy_all
+Tracker.destroy_all
+User.destroy_all
+Group.destroy_all
+
 g1 = Group.create([{name: "Roswell's Finest"}])

@@ -33,7 +33,34 @@
 <br>
 <br>
 
-
+<table>
+<tr>
+<th>Challenge Tracker<th>
+</tr>
+  <tr>
+    <td>Member</td>
+    <td>Sunday</td>
+    <td>Monday</td>
+    <td>Tuesday</td>
+    <td>Wednesday</td>
+    <td>Thursday</td>
+    <td>Friday</td>
+    <td>Saturday</td>
+  </tr>
+  <% @challenge.trackers.each do |track| %>
+    <tr>
+        <td> <%= track.user.name %></td>
+        <td><%= track.sunday_reps%></td>
+        <td><%= track.monday_reps%></td>
+        <td><%= track.tuesday_reps%></td>
+        <td><%= track.wednesday_reps%></td>
+        <td><%= track.thursday_reps%></td>
+        <td><%= track.friday_reps%></td>
+        <td><%= track.saturday_reps%></td>
+  </tr>
+<h2><%= link_to  "Update Tracker", edit_tracker_path(track.id) %></h2>
+  <% end %>
+</table>
 
 
 

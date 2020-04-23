@@ -27,7 +27,7 @@ class TrackersController < ApplicationController
     def update 
         @tracker = Tracker.find(params[:id])
         if @tracker.update(tracker_params)
-            redirect_to tracker_path(@tracker)
+            redirect_to challenge_path(@tracker.challenge)
         else
             render :edit
         end 
@@ -40,7 +40,7 @@ class TrackersController < ApplicationController
     end 
 
     def tracker_params 
-        params.require(:tracker).permit(:user_id, :challenge_id)
+        params.require(:tracker).permit(:user_id, :challenge_id, :sunday_reps, :monday_reps, :tuesday_reps, :wednesday_reps, :thursday_reps, :friday_reps, :saturday_reps)
     end 
     
 

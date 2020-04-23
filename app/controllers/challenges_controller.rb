@@ -11,7 +11,6 @@ class ChallengesController < ApplicationController
 
     def new
         @challenge  = Challenge.new
-        @charities = Charity.all
         @groups = Group.all
     end
 
