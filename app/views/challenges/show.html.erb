@@ -60,11 +60,13 @@
         <td><%= track.friday_reps%></td>
         <td><%= track.saturday_reps%></td>
         <td><%= track.total_reps%></td>
-        <td><%= link_to  "+", edit_tracker_path(track.id) %></td>
+        <td>
+          <%= link_to  "+", edit_tracker_path(track.id) %>
+        </td>
   </tr>
   <% end %>
 </table>
-<p><%=link_to "Update", edit_tracker_path()%></p>
+
 
 
 

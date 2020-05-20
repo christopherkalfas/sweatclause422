@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   
   get '/users/:id/trackers', to: 'users#trackers'
-  resources :users
+  resources :users 
   resources :groups
   resources :challenges
   resources :trackers
