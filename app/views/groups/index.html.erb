@@ -1,28 +1,20 @@
 <h1>All Groups</h1>
 
 
-<table>
-  <thead>
-    <tr>
-      <th><h2>Name</h2></th>
-    
-      
-      <th colspan="10"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td><%= link_to(group.name, group_path(group)) %></td>
-        
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <div class="card">
+    <div class="card-header">
+      All Groups
+    </div>
+    <ul class="list-group list-group-flush">
+    <% @groups.each do |group| %> 
+        <li class="list-group-item"><%= link_to(group.name, group_path(group)) %></li>
     <% end %>
-  </tbody>
-</table>
-
+  </
+  <% unless  %>
+    
+  <% end %>
+  >
+  </div>
 <br>
 
 <h2><%= link_to('New Group', new_group_path) %></h2>

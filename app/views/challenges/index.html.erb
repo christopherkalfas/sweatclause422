@@ -1,28 +1,11 @@
 <h1>All Challenges</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th><h2>Challenge Name </h2></th>
-     
-      
-      <th colspan="10"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @challenges.each do |challenge| %>
-      <tr>
-        <td><%= link_to(challenge.name, challenge_path(challenge)) %></td>
-      
-       
-        <td><%= link_to 'Edit', edit_challenge_path(challenge) %></td>
-        <td><%= link_to 'Destroy', challenge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <ul class="list-group list-group-flush">
+        <% @challenges.each do |challenge| %>
+            <li class="list-group-item"><%= link_to(challenge.name, challenge_path(challenge)) %></li>
+        <% end %>
+    </ul>
+</div>
 
 <br>
 
-<h2><%= link_to('Add a Challenge', new_challenge_path) %></h2>
+<h4><%= link_to('Add a Challenge', new_challenge_path) %></h4>
