@@ -12,12 +12,12 @@
 
 <p>
   <strong>Challenge Start-Date: </strong>
-  <%= @challenge.start_date.strftime("%a, %b %d - %Y") %>
+  <%= @challenge.start_date.strftime("%a %b #{@challenge.start_date.day.ordinalize}, %Y") %>
 </p>
 
 <p>
   <strong>Challenge End-Date: </strong>
-  <%= @challenge.end_date.strftime("%a, %b %d - %Y") %>
+  <%= @challenge.end_date.strftime("%a %b #{@challenge.end_date.day.ordinalize},  %Y") %>
 </p>
 
 <p>
@@ -39,13 +39,13 @@
 </tr>
   <tr>
     <td>Member</td>
-    <td>Sunday</td>
-    <td>Monday</td>
-    <td>Tuesday</td>
-    <td>Wednesday</td>
-    <td>Thursday</td>
-    <td>Friday</td>
-    <td>Saturday</td>
+    <td>Sun</td>
+    <td>Mon</td>
+    <td>Tues</td>
+    <td>Wed</td>
+    <td>Thurs</td>
+    <td>Fri</td>
+    <td>Sat</td>
     <td>Total</td>
     <td>Add Reps</td>
   </tr>
