@@ -12,12 +12,12 @@
 
 <p>
   <strong>Challenge Start-Date: </strong>
-  <%= @challenge.start_date %>
+  <%= @challenge.start_date.strftime("%m/%d/%Y") %>
 </p>
 
 <p>
   <strong>Challenge End-Date: </strong>
-  <%= @challenge.end_date %>
+  <%= @challenge.end_date.strftime("%m/%d/%Y") %>
 </p>
 
 <p>

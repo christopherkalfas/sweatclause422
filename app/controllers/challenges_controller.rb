@@ -48,7 +48,7 @@ class ChallengesController < ApplicationController
     private 
 
     def challenge_params 
-        params.require(:challenge).permit(:name, :activity_name, :activity_reps, :group_id)
+        params.require(:challenge).permit(:name, :activity_name, :activity_reps, :start_date, :end_date, :group_id)
     end 
 
     def correct_user

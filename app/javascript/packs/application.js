@@ -8,11 +8,13 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
+require("bootstrap-datepicker")
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
 
 import 'bootstrap'
+import "bootstrap-datepicker"
 import "../stylesheets/application.scss"
 
 document.addEventListener("turbolinks:load", ()=> {
