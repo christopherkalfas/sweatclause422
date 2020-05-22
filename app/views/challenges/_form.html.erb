@@ -15,7 +15,7 @@
     <%= f.label :end_date %>
     <%= f.date_field :end_date %>
     <br>
-    <%= f.collection_select(:group_id, Group.all, :id, :name) %>
+    <%= f.hidden_field :group_id %>
   </div>
 
   
@@ -24,3 +24,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+
