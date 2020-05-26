@@ -1,5 +1,5 @@
 class CharitiesController < ApplicationController
-    before_action :authticate!, except:[:index, :show]
+    before_action :authenticate!, except:[:index, :show]
 
     def index 
         @charities = Charity.all
@@ -13,11 +13,11 @@ class CharitiesController < ApplicationController
         @charity = Charity.new
     end
 
-    def def create
-        @charity = Charity.new(charity_params)
+    def create
+        @charity = Charity.create(charity_params)
         if @charity.save
             flash[:success] = "Charity successfully created"
-            redirect_to charity_path(@charity)
+            redirect_to charities_path
         else
             flash[:error] = "Something went wrong"
             render :new

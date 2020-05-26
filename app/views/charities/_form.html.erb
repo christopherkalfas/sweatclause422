@@ -1,0 +1,17 @@
+<%= form_for(@charity) do |f| %>
+    <div class="field">
+        <%=f.label :name %>
+        <%=f.text_field :name %>
+    </div>
+    <div class="field">
+        <%=f.label :description %>
+        <%=f.text_field :description %>
+    </div>
+    <div class="field">
+        <%=f.label :url %>
+        <%=f.url_field :url %>
+    </div>
+    <div class="action">
+    <%= f.submit %>
+    </div>
+<% end %>
