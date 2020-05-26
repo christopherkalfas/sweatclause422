@@ -1,9 +1,9 @@
 <div class="row" style="width: auto;">
   <div class="col-sm-6">
     <div class="card">
-      <div class="card-header"> 
+      <h2 class="card-header"> 
         <%= @challenge.name %>
-      </div>
+      </h2>
       <div class="card-body">
         <h5 class="card-title">
           <%= @challenge.start_date.strftime("%a %b #{@challenge.start_date.day.ordinalize}, %Y") %> -
@@ -22,9 +22,9 @@
   </div>
   <div class="col-sm-6">
     <div class="card">
-      <div class="card-header"> 
+      <h3 class="card-header"> 
         <%= link_to(@challenge.group.name, group_path(@challenge.group)) %>
-      </div>
+      </h3>
       <div class="card-body">
         <h5 class="card-title">
           <strong>Particpating Members: </strong>
@@ -36,7 +36,18 @@
               <li><%= link_to(user.name, user_path(user)) %></li>
             <% end %>
           </ul>
-        </p>
+          <h6 class="card-title">
+            Loser Donates to:
+          </h6>
+          <h5 class="card-text">
+            <%= @challenge.charity.name%>
+          </h5>
+          <p class="card-text">
+            <em><%= @challenge.charity.description %></em>
+          </p>
+          <a href=<%=@challenge.charity.url%> class="card-text">
+            Donate Now!
+        </a>
         
       </div>
     </div>

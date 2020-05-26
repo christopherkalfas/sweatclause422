@@ -1,0 +1,17 @@
+<h1>All Charities</h1>
+
+<div class="card-group">
+<% @charities.each do |charity| %>
+    <div class="card">
+        <h5 class="card-title">
+            <%= charity.name %>
+        </h5>
+        <p class="card-text">
+            <%= charity.description %>
+        </p>
+        <a href=<%=charity.url%> class="card-text">
+            Donate Now!
+        </a>
+
+    <% end %>
+</div>

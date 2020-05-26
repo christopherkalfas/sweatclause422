@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :groups
   resources :challenges
   resources :trackers
+  resources :charities
 end
