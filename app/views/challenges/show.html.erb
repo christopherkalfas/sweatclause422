@@ -1,68 +1,71 @@
-<div class="row" style="width: auto;">
-  <div class="col-sm-6">
+<div class="row row-cols-1 row-cols-md-2 mx-auto">
+  <div class="col mb-5">
     <div class="card">
-      <h2 class="card-header"> 
-        <%= @challenge.name %>
+      <h2 class="card-header bg-secondary text-light"> 
+          <%= @challenge.name %>
       </h2>
-      <div class="card-body">
-        <h5 class="card-title">
-          <%= @challenge.start_date.strftime("%a %b #{@challenge.start_date.day.ordinalize}, %Y") %> -
-          <%= @challenge.end_date.strftime("%a %b #{@challenge.end_date.day.ordinalize},  %Y") %>
-        </h5>
-        <p class="card-text">
-          <strong>Activity:</strong>
-          <%= @challenge.activity_name %>
-        </p>
-        <p class="card-text">
-          <strong>Goal Activity Reps</strong>
-          <%= @challenge.activity_reps %>
-        </p>
+        <div class="card-body">
+          <div class="row">
+              <h5 class="card-title pb-2">
+                <em>
+                  <%= @challenge.start_date.strftime("%a %b #{@challenge.start_date.day.ordinalize}, %Y") %> -
+                  <%= @challenge.end_date.strftime("%a %b #{@challenge.end_date.day.ordinalize},  %Y") %>
+                </em>
+              </h5>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h5 class="card-text">
+                <strong>Activity:</strong> <em><%= @challenge.activity_name %></em>
+              </h5>
+              <h5 class="card-text">
+                <strong>Goal Activity Reps</strong>
+                <%= @challenge.activity_reps %>
+              </h5>
+            </div>
+            <div class="col px-3">
+              <h5 class="card-title">
+                <%= link_to(@challenge.group.name, group_path(@challenge.group)) %>
+              </h5>
+              <h5 class="card-title">
+                <strong>Particpating Members: </strong>
+              </h5>
+              <p class="card-text">
+                <ul>
+                  <% @challenge.group.users.each do |user| %>
+                    <li><%= link_to(user.name, user_path(user)) %></li>
+                  <% end %>
+                </ul>
+                <h6 class="card-title">
+                  Loser Donates to:
+                </h6>
+                <h5 class="card-text">
+                  <%= @challenge.charity.name%>
+                </h5>
+                <p class="card-text">
+                  <em><%= @challenge.charity.description %></em>
+                </p>
+                <a href=<%=@challenge.charity.url%> class="card-text">
+                  Donate Now!
+                </a>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <h3 class="card-header"> 
-        <%= link_to(@challenge.group.name, group_path(@challenge.group)) %>
-      </h3>
-      <div class="card-body">
-        <h5 class="card-title">
-          <strong>Particpating Members: </strong>
-        </h5>
- 
-        <p class="card-text">
-          <ul>
-            <% @challenge.group.users.each do |user| %>
-              <li><%= link_to(user.name, user_path(user)) %></li>
-            <% end %>
-          </ul>
-          <h6 class="card-title">
-            Loser Donates to:
-          </h6>
-          <h5 class="card-text">
-            <%= @challenge.charity.name%>
-          </h5>
-          <p class="card-text">
-            <em><%= @challenge.charity.description %></em>
-          </p>
-          <a href=<%=@challenge.charity.url%> class="card-text">
-            Donate Now!
-        </a>
-        
-      </div>
-    </div>
-  </div>
-  </div>
+  
 
 
-<div class="row">
-<div class="col-md">
-<div class="card w-auto" style="margin: 20px;">
+
+<div class="row mx-auto">
+<div class="col-md"style="margin-top:20px;">
+<div class="card shadow-lg rounded" class="border">
   <table class="table table-striped">
   <tr>
-  <div class="card-header">
+  <h2 class="card-header bg-secondary text-white">
   Challenge Tracker
-  </div>
+  </h2>
   </tr>
     <thead>
       <th scope="col">Member</th>
