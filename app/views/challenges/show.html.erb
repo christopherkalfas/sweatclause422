@@ -1,7 +1,8 @@
 <div class="row row-cols-1 row-cols-md-2 mx-auto">
-  <div class="col mb-5">
-    <div class="card">
-      <h2 class="card-header bg-secondary text-light"> 
+  <div class="col mb">
+    <div class="card shadow-lg rounded" style="border: 1px;">
+      <h2 class="card-header bg-secondary text-light" 
+          style="text-shadow: 2px 2px 4px grey;"> 
           <%= @challenge.name %>
       </h2>
         <div class="card-body">
@@ -60,11 +61,13 @@
 
 <div class="row mx-auto">
 <div class="col-md"style="margin-top:20px;">
-<div class="card shadow-lg rounded" class="border">
+<div class="card shadow-lg rounded" style="border: 1px;">
   <table class="table table-striped">
   <tr>
-  <h2 class="card-header bg-secondary text-white">
-  Challenge Tracker
+  <h2 class="card-header bg-secondary text-white"
+      style="text-shadow: 2px 2px 4px grey;"
+  >
+    Challenge Tracker
   </h2>
   </tr>
     <thead>
@@ -80,7 +83,7 @@
       <th scope="col">Add Reps</th>
     </thead>
     <tbody>
-    <% @challenge.trackers.each do |track| %>
+    <% @challenge.rank_trackers.each do |track| %>
       <tr>
           <td scope="row"> <%= track.user.name %></td>
           <td><%= track.sunday_reps%></td>

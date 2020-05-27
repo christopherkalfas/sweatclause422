@@ -6,4 +6,7 @@ class Challenge < ApplicationRecord
     validates :name, presence: true
     validates :group_id, presence: true
 
+    def rank_trackers
+        self.trackers.sort_by {|tracker| tracker.total_reps}.reverse!
+    end 
 end
