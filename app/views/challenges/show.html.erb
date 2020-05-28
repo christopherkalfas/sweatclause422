@@ -23,6 +23,18 @@
                 <strong>Goal Activity Reps</strong>
                 <%= @challenge.activity_reps %>
               </h5>
+              <h6 class="card-title">
+                  Loser Donates to:
+                </h6>
+                <h5 class="card-text">
+                  <%= @challenge.charity.name%>
+                </h5>
+                <p class="card-text">
+                  <em><%= @challenge.charity.description %></em>
+                </p>
+                <a href=<%=@challenge.charity.url%> class="card-text">
+                  Donate Now!
+                </a>
             </div>
             <div class="col px-3">
               <h5 class="card-title">
@@ -37,18 +49,7 @@
                     <li><%= link_to(user.name, user_path(user)) %></li>
                   <% end %>
                 </ul>
-                <h6 class="card-title">
-                  Loser Donates to:
-                </h6>
-                <h5 class="card-text">
-                  <%= @challenge.charity.name%>
-                </h5>
-                <p class="card-text">
-                  <em><%= @challenge.charity.description %></em>
-                </p>
-                <a href=<%=@challenge.charity.url%> class="card-text">
-                  Donate Now!
-                </a>
+
               </div>
           </div>
         </div>
@@ -111,10 +112,10 @@
 <div class="row">
 <div class="col-sm-6">
 <div class="card" style="margin: 15px; padding:15px; margin-left:15px;">
-<h6><%= link_to('All challenges', challenges_path) %> |
+<h4><%= link_to('All challenges', challenges_path) %> |
 
 
-<%= link_to("Edit", edit_challenge_path(@challenge)) %></h6>
+<%= link_to("Edit", edit_challenge_path(@challenge)) %></h4>
 </div>
 </div>
 </div>

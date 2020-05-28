@@ -1,14 +1,21 @@
-<h1>All Groups</h1>
 
 
-  <div class="card">
-    <div class="card-header">
-      All Groups
+
+  <div class="card shadow-lg rounded"
+    style="border: 1px;
+        width: 50%;
+    ">
+    <div class="card-header bg-dark text-light">
+      <h2>All Groups</h2>
     </div>
     <ul class="list-group list-group-flush">
     <% @groups.each do |group| %> 
-        <li class="list-group-item"><%= link_to(group.name, group_path(group)) %></li>
+        <li class="list-group-item">
+          <h4><%= link_to(group.name, group_path(group)) %></h4>
+        </li>
     <% end %>
+    
+    </ul>
   </
   <% unless  %>
     
@@ -16,5 +23,13 @@
   >
   </div>
 <br>
+<div class= "card shadow-md rounded" 
+  style="background-color:#e9ecef;
+      width: 10em;
+      padding: 4px;">
+  <h5 class="text-center" class="text-decoration-none">
+    <%= link_to('New Group', new_group_path) %>
+  </h5>
+</div>
 
-<h2><%= link_to('New Group', new_group_path) %></h2>
+

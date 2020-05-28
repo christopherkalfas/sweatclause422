@@ -18,6 +18,12 @@ body {
     text-shadow: 2px;
 }
 
+.charity-card:hover {
+    color: #1b1d20;
+    background-color: #ffffff;
+   
+}
+
 @import "bootstrap";
 @import "bootstrap-datepicker3"
 
