@@ -11,7 +11,10 @@ class Challenge < ApplicationRecord
     end 
 
     def high_score
-        self.trackers.max_by {|tracker| tracker.total_reps}
+        if self.trackers.blank?
+            return "No trackers yet"
+        else 
+            self.trackers.max_by {|tracker| tracker.total_reps}
     end
 
     def low_score
