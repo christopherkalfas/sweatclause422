@@ -1,12 +1,14 @@
+<div class="container-md rounded bg-light" style="background-color:#e9ecef; padding:8px;">
 <%= form_for(@group) do |f| %>
-  <div class="field">
-    <%= f.label :name %>
+  <div class="form-group">
+   <h4> <%= f.label :name %></h4>
     <%= f.text_field :name %>
   </div>
 
   
 
-  <div class="actions">
+  <div class="actions" style="margin-left: 225px; font-size:18px;">
     <%= f.submit %>
   </div>
 <% end %>
+</div>

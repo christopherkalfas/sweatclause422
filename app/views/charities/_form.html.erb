@@ -1,17 +1,19 @@
-<%= form_for(@charity) do |f| %>
-    <div class="field">
-        <%=f.label :name %>
-        <%=f.text_field :name %>
-    </div>
-    <div class="field">
-        <%=f.label :description %>
-        <%=f.text_field :description %>
-    </div>
-    <div class="field">
-        <%=f.label :url %>
-        <%=f.url_field :url %>
-    </div>
-    <div class="action">
-    <%= f.submit %>
-    </div>
-<% end %>
+<div class="container-md rounded bg-light" style="background-color:#e9ecef; padding:8px;">
+    <%= form_for(@charity) do |f| %>
+        <div class="form-group">
+            <%=f.label :name %>
+            <%=f.text_field :name %>
+        </div>
+        <div class="form-group">
+            <%=f.label :description %>
+            <%=f.text_field :description %>
+        </div>
+        <div class="form-group">
+            <%=f.label :url %>
+            <%=f.url_field :url %>
+        </div>
+        <div class="btn" class="action">
+        <%= f.submit %>
+        </div>
+    <% end %>
+</div>

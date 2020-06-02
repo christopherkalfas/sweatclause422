@@ -1,29 +1,43 @@
+<div class="container-sm rounded bg-light"
+    style="background-color:#e9ecef; padding:10px; margin-left: 10px;margin-top:8px;width: 816px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);">
 <%= form_for(@challenge) do |f| %>
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
     <br>
-    <%= f.label :activity_name %>
-    <%= f.text_field :activity_name %>
+    <div class="form-group">
+      <%= f.label :activity_name %>
+      <%= f.text_field :activity_name %>
+    </div>
     <br>
-    <%= f.label :activity_reps %>
-    <%= f.text_field :activity_reps %>
+    <div class="form-group">
+      <%= f.label :activity_reps %>
+      <%= f.text_field :activity_reps %>
+    </div>
     <br>
-    <%= f.label :start_date %>
-    <%= f.date_field :start_date %>
+    <div class="form-group">
+      <%= f.label :start_date %>
+      <%= f.date_field :start_date %>
+    </div>
     <br>
-    <%= f.label :end_date %>
-    <%= f.date_field :end_date %>
+    <div class="form-group">
+      <%= f.label :end_date %>
+      <%= f.date_field :end_date %>
+    </div>
     <br>
+    <div class="form-group" style="font-size: 20px;margin-left: 10px; padding: 4px;">
     <%= f.collection_select(:charity_id, Charity.all, :id, :name) %>
     <%= f.hidden_field :group_id %>
+    </div>
   </div>
 
-  
-
-  <div class="actions">
+  <div class="actions" style="font-size: 20px; margin-left: 10px;">
     <%= f.submit %>
   </div>
 <% end %>
+</div>
 
 

@@ -24,6 +24,26 @@ body {
    
 }
 
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 150px;
+    text-align: right;
+    font-size: 22px;
+    padding-right: 4px;
+}
+
+input number{
+    width: 50px;
+}
+
+.tracker-btn{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center; 
+}
+
 @import "bootstrap";
 @import "bootstrap-datepicker3"
 

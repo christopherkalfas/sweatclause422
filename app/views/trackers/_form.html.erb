@@ -1,31 +1,42 @@
+<div class="container-sm rounded bg-light"
+    style="background-color:#e9ecef; padding:8px; margin-left: 10px;width: 816px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);">
 <%= form_for(@tracker) do |f| %>
-    <div class="field">
-
-    <%= f.collection_select(:challenge_id, Challenge.all, :id, :name) %>
-
-    <%= f.label "Sunday"%>
-    <%= f.number_field :sunday_reps%>
-
-    <%= f.label "Monday"%>
-    <%= f.number_field :monday_reps%>
-
-    <%= f.label "Tuesday"%>
-    <%= f.number_field :tuesday_reps%>
-    
-    <%= f.label "Wednesday"%>
-    <%= f.number_field :wednesday_reps%>
-    
-    <%= f.label "Thursday"%>
-    <%= f.number_field :thursday_reps%>
-    
-    <%= f.label "Friday"%>
-    <%= f.number_field :friday_reps%>
-
-    <%= f.label "Saturday"%>
-    <%= f.number_field :saturday_reps%>
+    <div class="form-group">
+        <%= f.label "Sunday: "%>
+        <%= f.number_field :sunday_reps%>
     </div>
-
-    <div class="actions">
-    <%= f.submit %>
+    <div class="form-group">
+        <%= f.label "Monday: "%>
+        <%= f.number_field :monday_reps%>
+    </div>
+    <div class="form-group">
+        <%= f.label "Tuesday: "%>
+        <%= f.number_field :tuesday_reps%>
+    </div>
+    <div class="form-group">
+        <%= f.label "Wednesday: "%>
+        <%= f.number_field :wednesday_reps%>
+    </div>
+    <div class="form-group">
+        <%= f.label "Thursday: "%>
+        <%= f.number_field :thursday_reps%>
+    </div>
+    <div class="form-group">
+        <%= f.label "Friday: "%>
+        <%= f.number_field :friday_reps%>
+    </div>
+    <div class="form-group">
+        <%= f.label "Saturday: "%>
+        <%= f.number_field :saturday_reps%>
+    </div>
+    <br>
+    <div class="form-group">
+        <label>Challenge</label>
+        <%= f.collection_select(:challenge_id, Challenge.all, :id, :name) %>
+    </div>
+    <div class="tracker-btn" class="actions">
+        <%= f.submit %>
     </div>
 <% end %>
+</div>
