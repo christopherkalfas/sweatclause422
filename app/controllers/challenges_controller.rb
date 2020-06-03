@@ -14,6 +14,7 @@ class ChallengesController < ApplicationController
     def new
         @challenge  = Challenge.new
         @groups = Group.all
+        @charities = Charity.all
     end
 
     def create 
@@ -48,7 +49,7 @@ class ChallengesController < ApplicationController
     private 
 
     def challenge_params 
-        params.require(:challenge).permit(:name, :activity_name, :activity_reps, :start_date, :end_date, :group_id)
+        params.require(:challenge).permit(:name, :activity_name, :activity_reps, :start_date, :end_date, :group_id, :charity_id)
     end 
 
     def correct_user
