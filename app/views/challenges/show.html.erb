@@ -49,7 +49,7 @@
                     <li><h4><%= user.username %></h4></li>
                   <% end %>
                 </ul>
-
+          
             </div>
           </div>
         </div>
@@ -113,12 +113,12 @@
 
 <br>
 <div class="row">
-<div class="col-sm-6">
-<div class="card" style="margin: 15px; padding:15px; margin-left:15px;">
-<h4><%= link_to('All challenges', challenges_path) %> |
-
-
-<%= link_to("Edit", edit_challenge_path(@challenge)) %></h4>
-</div>
-</div>
+  <div class="col-sm-6">
+    <div class="card" style="margin: 15px; padding:15px; margin-left:15px;">
+      <h4>
+        <%= link_to("Edit", edit_challenge_path(@challenge)) %> |
+        <%= link_to("Delete", @challenge, method: :delete, data: { confirm: 'Are you sure?' }) %>
+      </h4>
+    </div>
+  </div>
 </div>

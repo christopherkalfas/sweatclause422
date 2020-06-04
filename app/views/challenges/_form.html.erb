@@ -5,27 +5,27 @@
   <div class="field">
     <div class="form-group">
       <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, required: true, placeholder: "Squeeze a Cure, Make Cancer Walk the Plank..." %>
     </div>
     <br>
     <div class="form-group">
       <%= f.label :activity_name %>
-      <%= f.text_field :activity_name %>
+      <%= f.text_field :activity_name, required: true, placeholder: "Push-Ups, Planks..." %>
     </div>
     <br>
     <div class="form-group">
-      <%= f.label :activity_reps %>
-      <%= f.text_field :activity_reps %>
+      <%= f.label "Rep Goal" %>
+      <%= f.text_field :activity_reps, required: true, placeholder: "50, 100, 1,000..." %>
     </div>
     <br>
     <div class="form-group">
       <%= f.label :start_date %>
-      <%= f.date_field :start_date %>
+      <%= f.date_field :start_date, required: true %>
     </div>
     <br>
     <div class="form-group">
       <%= f.label :end_date %>
-      <%= f.date_field :end_date %>
+      <%= f.date_field :end_date, required: true %>
     </div>
     <br>
     <div class="form-group" style="font-size: 20px;margin-left: 10px; padding: 4px;">
