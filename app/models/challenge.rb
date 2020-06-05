@@ -5,7 +5,7 @@ class Challenge < ApplicationRecord
 
     validates :name, presence: true
     validates :activity_name, presence: true
-    validates :activity_reps, numericality: { message: "Must enter a number" }
+    validates :activity_reps, numericality: { message: "Must enter a number" }, length: {maximum: 10}
     validates :start_date, :end_date, presence: true
 
 
