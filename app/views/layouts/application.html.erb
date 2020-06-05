@@ -18,12 +18,16 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+      <% if logged_in? %>
+        <a class="nav-item nav-link" href="/profile">My Profile</a>
+        <a class="nav-item nav-link" href="/logout">Log Out</a>
+      <% else %>
+        <a class="nav-item nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+      <% end %>
       <a class="nav-item nav-link" href="/users">Users</a>
       <a class="nav-item nav-link" href="/challenges">Challenges</a>
       <a class="nav-item nav-link" href="/groups">Groups</a>
       <a class="nav-item nav-link" href="/charities">Charities</a>
-      <a class="nav-item nav-link" href="/logout">Log Out</a>
   
     </div>
   </div>

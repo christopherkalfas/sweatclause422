@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
             flash[:info] = "Login Successful!"
-            redirect_to users_path
+            redirect_to @user
         else
             @error = "No such username or wrong password."
             render :new

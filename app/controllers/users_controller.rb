@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :authenticate!, except: [:index, :new, :create]
-    before_action :correct_user,   only: [:edit, :update]
+    before_action :correct_user,   only: [:edit, :update, :delete]
     def index 
         @users = User.all 
     end  
@@ -11,7 +11,8 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id])
+        # @user = User.find(params[:id])
+        @user = User.find(current_user.id)
     end
     
     
