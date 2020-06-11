@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'welcome#index'
 
@@ -13,4 +14,5 @@ Rails.application.routes.draw do
   resources :challenges
   resources :trackers
   resources :charities
+  resources :password_resets
 end

@@ -17,7 +17,8 @@ class ApplicationController < ActionController::Base
       end
 
       def logged_in?
-        session[:user_id]
+        # session[:user_id]
+        cookies[:auth_token]
       end
 
       def current_user?(user)
