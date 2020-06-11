@@ -5,7 +5,12 @@ class SessionsController < ApplicationController
     def create
         @user = User.find_by(username: params[:username])
         if @user && @user.authenticate(params[:password])
-            session[:user_id] = @user.id
+            if params[:remember_me]
+                cookies.permanent[:auth_token] = @user.auth_token
+            # session[:user_id] = @user.id
+            else 
+                cookies[:auth_token] = @user.auth_token
+            end 
             flash[:info] = "Login Successful!"
             redirect_to @user
         else
@@ -15,6 +20,7 @@ class SessionsController < ApplicationController
     end
 
     def destroy
+        cookies.delete(:auth_token)
         session[:user_id] = nil
         redirect_to users_path
     end

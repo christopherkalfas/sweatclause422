@@ -86,7 +86,7 @@
     <tbody>
     <% @challenge.rank_trackers.each do |track| %>
       <tr>
-          <td scope="row"> <%= track.user.name %></td>
+          <td scope="row"> <%= track.user.username unless track.user.blank? %></td>
           <td><%= track.sunday_reps%></td>
           <td><%= track.monday_reps%></td>
           <td><%= track.tuesday_reps%></td>
