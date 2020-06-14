@@ -10,4 +10,4 @@ Tracker.destroy_all
 User.destroy_all
 Group.destroy_all
 
-g1 = Group.create([{name: "Roswell's Finest"}])
+# g1 = Group.create([{name: "Roswell's Finest"}])

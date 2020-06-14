@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
         if @user && @user.authenticate(params[:password])
             if params[:remember_me]
                 cookies.permanent[:auth_token] = @user.auth_token
-            # session[:user_id] = @user.id
+                # session[:user_id] = @user.id
             else 
                 cookies[:auth_token] = @user.auth_token
             end 
