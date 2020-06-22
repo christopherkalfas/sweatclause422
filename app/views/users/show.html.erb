@@ -1,20 +1,25 @@
 <div class="container-md shadow-lg rounded" 
   style="background-color:#e9ecef;
     padding:8px;">
+  <h5>
+    Welcome back, 
+  </h5>
+  
   <h3>
-    Welcome back, <%= @user.name %>!
+    <%= @user.name %>!
   </h3>
-  <h4>
+
+  <h5>
     <strong>Username:</strong>
     <%= @user.username %>
-  </h4>
+  </h5>
   
-    <h4>
+    <h5>
       <strong>Group:</strong>
       <%= link_to(@user.group.name, group_path(@user.group)) %>
-    </h4>
+    </h5>
 
-        <h5>My Active Challenge</h5>
+        <h4>My Active Challenge(s):</h4>
       <ul class="list-group-fluid w-50" >
       <% @user.challenges.each do |challenge| %>
           <li class="list-group-item my-2 rounded shadow-sm"> 
@@ -34,6 +39,8 @@
   
       </ul>
     
+  <h5><%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Delete Profile', @user, method: :delete, data: {confirm: "Are you sure?"}%></h5>
 
 
 
@@ -41,6 +48,3 @@
 
 </div>
 
-
-<h2><%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Delete Profile', @user, method: :delete, data: {confirm: "Are you sure?"}%></h2>
