@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
     def new
         @user = User.new
-        @groups = Group.all
+    
     end
 
     def show
@@ -20,13 +20,19 @@ class UsersController < ApplicationController
 
     def create 
         @user = User.new(user_params)
-        
+        @token = params[:invite_token]
+        if @token != nil 
+            grp = Invite.find_by_token(@token).group
+            @user.groups.push(grp)
+        else
             if @user.save 
                 session[:user_id] = @user.id
                 redirect_to user_path(@user)
+                UserMailer.signup_confirmation(@user).deliver
             else 
                 render :new
             end 
+        end
     end
 
     def edit 
