@@ -1,6 +1,18 @@
 class ApplicationController < ActionController::Base
+    # def current_user
+    #     @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
+    # end
+
     def current_user
-        @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
+      @current_user ||= lookup_user
+    end
+    
+    def lookup_user
+      if cookies[:auth_token]
+        User.find_by_auth_token!(cookies[:auth_token])
+      elsif session[:user_id]
+        User.find_by_id(session[:user_id])
+      end
     end
     
       def authenticate!
