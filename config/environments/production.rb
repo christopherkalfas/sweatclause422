@@ -61,13 +61,13 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "sweatclause422_production"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: "radiant-wave-27873.herokuapp.com"}
+  config.action_mailer.default_url_options = { host: "http://radiant-wave-27873.herokuapp.com"}
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
  
   
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :ses
   config.action_mailer.smtp_settings = {
     port: 587,
     address: "smtp.gmail.com",
@@ -87,7 +87,7 @@ Rails.application.configure do
 
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
-
+  config.active_storage.service= :amazon
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
