@@ -1,6 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
-    belongs_to :group
+    has_many :memberships
+    has_many :groups, through: :memberships
+    has_many :owned_groups, foreign_key: 'owner_id', class_name: 'Group'
     has_many :trackers
     has_many :challenges, through: :trackers
 

@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 4.5.0'
 gem 'bootstrap-datepicker-rails'
+gem 'cancancan', '~> 3.1'
 
 gem 'aws-sdk-s3', require: false
 
