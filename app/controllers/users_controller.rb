@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
     def new
         @user = User.new
-        @groups = Group.all
     end
 
     def show
@@ -53,7 +52,7 @@ class UsersController < ApplicationController
     private 
 
     def user_params 
-        params.require(:user).permit(:name, :username, :password, :email, :group_id, :auth_token, :password_reset_token, :password_reset_sent_at)
+        params.require(:user).permit(:name, :username, :password, :email, :auth_token, :password_reset_token, :password_reset_sent_at)
     end
 
     def correct_user
