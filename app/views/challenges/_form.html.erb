@@ -30,7 +30,7 @@
     <br>
     <div class="form-group" style="font-size: 20px;margin-left: 10px; padding: 4px;">
     <%= f.collection_select(:charity_id, Charity.all, :id, :name) %>
-    <%= f.hidden_field :group_id %>
+    <%= f.collection_select(:group_id, current_user.owned_groups, :id, :name) %>
     </div>
   </div>
 

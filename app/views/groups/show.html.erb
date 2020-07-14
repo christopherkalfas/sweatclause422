@@ -1,5 +1,8 @@
 <h1><%= @group.name %></h1>
 
+<h3>Commissioner: <%=@group.owner.name%></h3>
+<%= link_to "Add new Member", new_membership_path %>
+
 
 <h4>Members:</h4>
 <ul>
@@ -14,6 +17,7 @@
     <li><%= link_to(challenge.name, challenge_path(challenge)) %></li>
   <% end %>
 </ul>
+
 
 <h2><%= link_to('All Groups', groups_path) %> |
 

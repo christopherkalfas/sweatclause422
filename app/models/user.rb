@@ -22,4 +22,6 @@ class User < ApplicationRecord
         end while User.exists?(column => self[column])
     end 
 
+
+
 end

@@ -13,12 +13,12 @@ class ChallengesController < ApplicationController
 
     def new
         @challenge  = Challenge.new
-        @groups = Group.all
+        @groups = current_user.owned_groups
         @charities = Charity.all
     end
 
     def create 
-        @challenge = current_user.group.challenges.build(challenge_params)
+        @challenge = Challenge.create(challenge_params)
         if @challenge.save 
             redirect_to challenge_path(@challenge)
         else  

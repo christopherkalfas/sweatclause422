@@ -16,8 +16,16 @@
   
     <h5>
       <strong>Group:</strong>
-      <%= link_to(@user.group.name, group_path(@user.group)) %>
     </h5>
+      <ul class="list-group-fluid w-50" >
+      <% @user.groups.each do |group| %>
+        <li class="list-group-item my-2 rounded shadow-sm"> 
+          <h5>
+            <%= link_to(group.name, group_path(group)) %>
+          </h5>
+        </li>
+      <% end %>
+      </ul>
 
         <h4>My Active Challenge(s):</h4>
       <ul class="list-group-fluid w-50" >

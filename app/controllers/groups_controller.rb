@@ -15,8 +15,9 @@ class GroupsController < ApplicationController
 
     def create 
         @group = Group.create(group_params)
-        
+        @group.owner_id = current_user.id if current_user
             if @group.save 
+                Membership.create(group_id: "#{@group.id}", user_id: "#{@current_user.id}")
                 redirect_to group_path(@group)
             else 
                 render :new
