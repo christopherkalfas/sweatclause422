@@ -1,13 +1,26 @@
 <h1><%= @group.name %></h1>
 
 <h3>Commissioner: <%=@group.owner.name%></h3>
-<%= link_to "Add new Member", new_membership_path %>
+
+<% if can? :update, @group %>
+  <%= link_to "Add new Member", new_membership_path %>
+  <ul>
+  <%= "Remove Member"%>
+  <% @group.memberships.each do |membership| %>
+    <li>  
+      <%= button_to(membership.user.username, membership, method: :delete, data: {confirm: "Are you sure?"}) %>
+    </li>
+    
+  <% end %>
+</ul>
+<%end%>
 
 
 <h4>Members:</h4>
 <ul>
   <% @group.users.each do |user| %>
     <li><%= link_to(user.name, user_path(user)) %></li>
+    
   <% end %>
 </ul>
 

@@ -14,5 +14,7 @@ class Group < ApplicationRecord
         User.select {|user| user.groups.pluck(:name).exclude?(self.name)}
     end
 
+
+
 end
 
