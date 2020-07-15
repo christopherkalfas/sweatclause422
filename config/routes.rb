@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   resources :trackers
   resources :charities
   resources :password_resets
-  resources :memberships, only: [:new]
+  resources :memberships
 end

@@ -1,38 +1,69 @@
-<h1><%= @group.name %></h1>
-
-<h3>Commissioner: <%=@group.owner.name%></h3>
-
-<% if can? :update, @group %>
-  <%= link_to "Add new Member", new_membership_path %>
-  <ul>
-  <%= "Remove Member"%>
-  <% @group.memberships.each do |membership| %>
-    <li>  
-      <%= button_to(membership.user.username, membership, method: :delete, data: {confirm: "Are you sure?"}) %>
-    </li>
-    
-  <% end %>
-</ul>
-<%end%>
 
 
-<h4>Members:</h4>
-<ul>
-  <% @group.users.each do |user| %>
-    <li><%= link_to(user.name, user_path(user)) %></li>
-    
-  <% end %>
-</ul>
+<div class="container-md shadow-lg rounded"style="background-color:#e9ecef; padding:8px;">
+  <h2 class="card-header rounded bg-dark text-light" >
+    <%= @group.name %>
+  </h2>
 
-<h4>Challenges:</h4>
-<ul>
-  <% @group.challenges.each do |challenge| %>
-    <li><%= link_to(challenge.name, challenge_path(challenge)) %></li>
-  <% end %>
-</ul>
+  <h6 style="margin:8px;">Commissioner: <em><%=@group.owner.username%></em></h6>
 
 
-<h2><%= link_to('All Groups', groups_path) %> |
+<div >
+<table class="table table-striped">
+  <thead>
+    <th class="card-title">Members</th>
+  </thead>
+
+    <% @group.users.each do |user| %>
+  <tr class="card-text">
+      <td><%= link_to(user.name, user_path(user)) %></td>
+  </tr>
+      
+    <% end %>
+  </table>
+</div>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <th class="card-title">Challenges</th>
+    </thead>
+    <% @group.challenges.each do |challenge| %>
+      <tr class="card-text">
+        <td><%= link_to(challenge.name, challenge_path(challenge)) %></td>
+      </tr>
+    <% end %>
+  
+  </table>
+  </div>
 
 
-<%= link_to("Edit", edit_group_path(@group)) %></h2>
+  <% if can? :update, @group %>
+    <div id="accordion" style="margin-top: 15px;" >
+      <div class="card shadow-lg">
+        <div class="card-header rounded bg-dark text-light" id="headingOne">
+          <h3 class="mb-0">
+            <button class="btn btn-link" style="color:white; text-decoration:none;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Commissioner Tools
+            </button>
+          </h3>
+        </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+          <h6><%= link_to("Edit Group Name", edit_group_path(@group)) %></h6>
+          <h6><%= link_to "Add new Member", new_membership_path %></h6>
+          <div class="card-footer">
+            <h6>Remove Member</h6>  
+                <% @group.memberships.each do |membership| %>
+                  <div class="alert alert-danger w-25" style="color:white; text-decoration:none;">
+                      <%= link_to(membership.user.username, membership, method: :delete, data: {confirm: "Are you sure?"}) %>
+                  </div>
+                <% end%>
+            </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
+  <%end%>
+</div>

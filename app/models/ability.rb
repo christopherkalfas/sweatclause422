@@ -10,6 +10,10 @@ class Ability
       if user.admin?
         can :manage, :all
       else
+        can :manage, Challenge do |challenge|
+          challenge.group.owner_id == user.id
+        end 
+        
         can :update, Group do |group|
           group.owner == user
         end
