@@ -22,6 +22,6 @@ class SessionsController < ApplicationController
     def destroy
         cookies.delete(:auth_token)
         session[:user_id] = nil
-        redirect_to users_path
+        redirect_to root
     end
 end

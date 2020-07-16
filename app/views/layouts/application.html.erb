@@ -24,7 +24,9 @@
       <% else %>
         <a class="nav-item nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
       <% end %>
+      <% if can? :manage, :all%>
       <a class="nav-item nav-link" href="/users">Users</a>
+      <%end%>
       <a class="nav-item nav-link" href="/challenges">Challenges</a>
       <a class="nav-item nav-link" href="/groups">Groups</a>
       <a class="nav-item nav-link" href="/charities">Charities</a>
@@ -32,6 +34,8 @@
     </div>
   </div>
 </nav>
+
+
 <div class="jumbotron jumbotron-fluid rounded-bottom" style="padding-top: 22px; padding-bottom: 22px;">
   <div class="container">
     <h1 class="display-5">Sweat Clause</h1>
@@ -40,7 +44,7 @@
   </div>
 </div>
 
-    
+
 
   </div>
 </div>

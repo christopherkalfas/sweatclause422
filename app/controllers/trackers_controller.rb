@@ -52,7 +52,7 @@ private
     def correct_user
         @tracker = Tracker.find(params[:id])
         unless @tracker.user == current_user
-            redirect_to challenge_path(@tracker.challenge), notice: "Not your tracker, bro!"
+            redirect_to challenge_path(@tracker.challenge), flash: {alert: "Not your tracker, my dude."}
         end
     end
     

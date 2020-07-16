@@ -99,10 +99,17 @@
             <%= link_to  "+", edit_tracker_path(track.id) %>
           </td>
     </tr>
-    <% end %>
+   
     </tbody>
+    <% end %>
   </table>
+  <% flash.each do |type, msg| %>
+  <div class="alert alert-danger">
+    <%= msg %>
+  </div>
+<% end %>
   <div class="card-footer">
+
     <%= link_to("Create your Tracker", new_tracker_path)%>
   </div>
 </div>
