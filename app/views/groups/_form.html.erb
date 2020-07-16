@@ -5,8 +5,10 @@
     <%= f.text_field :name %>
   </div>
 
+  <%= collection_select(:user, :id, @group.not_in_group, :id, :name) %>
+  <%# <%= f.select(:users, @users, {}, {multiple: true, selected: @group.not_in_group }) %> 
+  <%# options for select and provide the array of selected users????%>
   
-
   <div class="actions" style="margin-left: 225px; font-size:18px;">
     <%= f.submit %>
   </div>

@@ -26,10 +26,14 @@ class GroupsController < ApplicationController
 
     def edit 
         @group = Group.find(params[:id])
+        # @users = @group.not_in_group
+        @users = User.all
     end 
 
     def update 
         @group = Group.find(params[:id])
+        @user = User.find(params["user"]["id"])
+        @group.users << @user
         if @group.update(group_params)
             redirect_to group_path(@group)
         else
