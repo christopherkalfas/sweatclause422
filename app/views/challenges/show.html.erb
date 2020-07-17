@@ -110,7 +110,10 @@
 <% end %>
   <div class="card-footer">
 
-    <%= link_to("Create your Tracker", new_tracker_path)%>
+  <% if my_tracker?(@challenge)%>
+      <%= link_to("Create your Tracker", new_tracker_path) %>
+   <% end %>
+
   </div>
 </div>
 </div>

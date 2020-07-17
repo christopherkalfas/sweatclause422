@@ -38,9 +38,11 @@ class ApplicationController < ActionController::Base
         user == current_user
       end
 
-      def my_tracker?(tracker)
-        tracker.user_id == current_user.id
+      def my_tracker?(challenge)
+        !current_user.trackers.exists?(challenge_id: challenge.id)
       end 
+
+     
 
       helper_method :current_user
       helper_method :current_user?

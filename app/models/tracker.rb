@@ -2,7 +2,7 @@ class Tracker < ApplicationRecord
     belongs_to :user
     belongs_to :challenge
 
-   
+    validates :challenge_id, uniqueness: {scope: :user_id}
 
     validates :sunday_reps, :monday_reps, :tuesday_reps, :wednesday_reps, :thursday_reps, :friday_reps, :saturday_reps, :numericality => true, length: {maximum: 10}
     def total_reps

@@ -19,7 +19,8 @@ class TrackersController < ApplicationController
         @tracker = current_user.trackers.build(tracker_params)
         if @tracker.save
             redirect_to challenge_path(@tracker.challenge)
-        else 
+        else
+            @error = "You can't have more than one(1) tracker per challenge!" 
             render :new
         end
     end 
@@ -55,6 +56,7 @@ private
             redirect_to challenge_path(@tracker.challenge), flash: {alert: "Not your tracker, my dude."}
         end
     end
+
     
 
     
