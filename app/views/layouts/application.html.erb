@@ -43,7 +43,11 @@
     <p class="lead"> <%= Time.now.strftime("%l:%M%p - %A %B %d, %Y ") %>
   </div>
 </div>
-
+<% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>">
+            <%= value %>
+      </div>
+<% end %>
 
 
   </div>

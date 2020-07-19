@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
             else 
                 cookies[:auth_token] = @user.auth_token
             end 
-            flash[:info] = "Login Successful!"
+            flash[:success] = "Login Successful!"
             redirect_to @user
         else
             @error = "No such username or wrong password."
@@ -22,6 +22,6 @@ class SessionsController < ApplicationController
     def destroy
         cookies.delete(:auth_token)
         session[:user_id] = nil
-        redirect_to root
+        redirect_to root_path
     end
 end

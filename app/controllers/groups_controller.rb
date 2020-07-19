@@ -18,8 +18,10 @@ class GroupsController < ApplicationController
         @group.owner_id = current_user.id if current_user
             if @group.save 
                 Membership.create(group_id: "#{@group.id}", user_id: "#{@current_user.id}")
+                flash[:success] = "Successfully created a new group!"
                 redirect_to group_path(@group)
             else 
+                flash[:error] = "Something went wrongzo!"
                 render :new
             end 
     end
@@ -35,6 +37,7 @@ class GroupsController < ApplicationController
         @user = User.find(params["user"]["id"])
         @group.users << @user
         if @group.update(group_params)
+            flash[:success] = "Successfully updated the Group"
             redirect_to group_path(@group)
         else
             render :edit
@@ -44,6 +47,7 @@ class GroupsController < ApplicationController
     def destroy 
         @group = Group.find(params[:id])
         @group.destroy
+        flash[:alert] = "Successfully created..."
         redirect_to groups_path
     end 
 

@@ -16,7 +16,6 @@ class Challenge < ApplicationRecord
         self.trackers.sort_by {|tracker| tracker.total_reps}.reverse!
     end 
 
-    
 
     # def high_score
     #     if self.trackers.empty?

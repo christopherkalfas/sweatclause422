@@ -2,7 +2,7 @@
     style="background-color:#e9ecef; padding:8px; margin-left: 10px;width: 816px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);">
 <%= form_for(@tracker) do |f| %>
-    <div class="form-group">
+    <div class="form-group pt-2">
         <%= f.label "Sunday: "%>
         <%= f.number_field :sunday_reps, maxlength: 10%>
     </div>
@@ -35,8 +35,9 @@
         <label>Challenge</label>
         <%= f.collection_select(:challenge_id, Challenge.all, :id, :name) %>
     </div>
-    <div class="tracker-btn" class="actions">
-        <%= f.submit %>
-    </div>
+
+    <%= f.submit("Submit", class: "btn btn-success" ) %>
+
+   
 <% end %>
 </div>

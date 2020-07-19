@@ -1,6 +1,6 @@
 class ChallengesController < ApplicationController
     before_action :authenticate!, except: [:index, :show]
-    before_action :correct_user, only: [:edit, :update, :destroy]
+    # before_action :correct_user, only: [:edit, :update, :destroy]
 
 
     def index
@@ -52,10 +52,15 @@ class ChallengesController < ApplicationController
         params.require(:challenge).permit(:name, :activity_name, :activity_reps, :start_date, :end_date, :group_id, :charity_id)
     end 
 
-    def correct_user
-        @challenge = Challenge.find(params[:id])
-        unless @challenge.group_id == current_user.group_id
-            redirect_to challenge_path(@challenge), notice: "Not your challenge, bro!"
-        end
-    end
+
+    # def correct_group_user
+    #     @challenge = Challenge.find(pramas[:id])
+    #     unless @challenge.group_id ==
+    # end
+    # def correct_user
+    #     @challenge = Challenge.find(params[:id])
+    #     unless @challenge.group_id == current_user.group_id
+    #         redirect_to challenge_path(@challenge), notice: "Not your challenge, bro!"
+    #     end
+    # end
 end

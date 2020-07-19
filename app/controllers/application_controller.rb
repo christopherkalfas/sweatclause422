@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     
       def authenticate!
         unless current_user
-          flash[:info] = "You have to be logged in to do that!"
+          flash[:alert] = "You have to be logged in to do that!"
           redirect_to login_path
         end
       end
@@ -41,6 +41,10 @@ class ApplicationController < ActionController::Base
       def my_tracker?(challenge)
         !current_user.trackers.exists?(challenge_id: challenge.id)
       end 
+
+      def challenge_member(challenge)
+        current_user.challenges.includes?(challenge.id)
+      end
 
      
 

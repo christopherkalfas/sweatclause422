@@ -38,7 +38,11 @@
             </div>
             <div class="col-4">
               <h3 class="card-title">
+              <% if logged_in? %>
                 <%= link_to(@challenge.group.name, group_path(@challenge.group)) %>
+              <% else %>
+                <h3><%= @challenge.group.name %><h3>
+              <% end %>
               </h3>
               <h6 class="card-title">
                 <strong>Particpating Members: </strong>
@@ -81,7 +85,9 @@
       <th scope="col">Fri</th>
       <th scope="col">Sat</th>
       <th scope="col">Total</th>
+      <% if can? :manage, @challenge%>
       <th scope="col">Add Reps</th>
+      <% end %>
     </thead>
     <tbody>
     <% @challenge.rank_trackers.each do |track| %>
@@ -96,25 +102,23 @@
           <td><%= track.saturday_reps%></td>
           <td><%= track.total_reps%></td>
           <td>
-            <%= link_to  "+", edit_tracker_path(track.id) %>
+            <% if can? :manage, @challenge%>
+              <%= link_to  "+", edit_tracker_path(track.id) %>
+            <% end %>
           </td>
     </tr>
    
     </tbody>
     <% end %>
   </table>
-  <% flash.each do |type, msg| %>
-  <div class="alert alert-danger">
-    <%= msg %>
-  </div>
-<% end %>
+ 
+<% if can? :manage, @challenge%>
   <div class="card-footer">
-
   <% if my_tracker?(@challenge)%>
       <%= link_to("Create your Tracker", new_tracker_path) %>
    <% end %>
-
   </div>
+  <% end %>
 </div>
 </div>
 </div>

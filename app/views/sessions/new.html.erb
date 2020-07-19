@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card w-50">
 <h2 class="card-header bg-dark text-light">Login</h2>
 <p id="notice">
     <%= notice %>
@@ -27,17 +27,17 @@
     <%= password_field_tag(:password) %>
   </div>
   <div class="form-group" style="margin-left: 280px; font-size:18px;">
-    <%= submit_tag("Login") %>
+    <%= submit_tag("Login", class: "btn btn-primary") %>
   </div>
-  <div class="form-group">
+  <div class="form-group ml-4">
     <p><%=link_to("forgotten password?", new_password_reset_path) %></p>
   </div>
-  <div class="form-group">
+  <div class="form-group ml-4">
     <%= label_tag :remember_me %>
       <%= check_box_tag :remember_me, 1, params[:remember_me] %>
   </div>
 <% end %>
 
 
-<h5 class="card-footer"><%= link_to 'Create a User Account', new_user_path %></h5>
+<h5 class="card-footer"><%= link_to 'Sign-Up', new_user_path %></h5>
 </div>
