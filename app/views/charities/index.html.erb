@@ -15,14 +15,24 @@
             <%= charity.name %>
         </h5>
         <p class="card-text">
-            <%= charity.description %>
+           <em> <%= charity.description %></em>
         </p>
         <a href=<%=charity.url%> class="card-text">
             Donate Now!
         </a>
+
+        <% if can? :manage, :all %>
+            <div class="card-footer mt-1">
+                <%= link_to("Edit Charity", edit_charity_path(charity.id))%> |
+                <%= link_to("Delete", charity, method: :delete, data: { confirm: 'Are you sure?' }) %>
+            </div>
+        <% end %>
     </div>
     <% end %>
 </div>
+<% if logged_in? %>
 <div class="card mx-auto bg-light text-dark shadow-lg p-2" style="width: 200px; text-align: center;">
     <h5><%= link_to("Add a New Charity", new_charity_path) %></h5>
 </div>
+<% end %>
+

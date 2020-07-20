@@ -1,16 +1,16 @@
-<div class="container-md rounded bg-light" style="background-color:#e9ecef; padding:8px;">
+<div class="container-md rounded bg-light w-auto" style="background-color:#e9ecef; padding:12px; margin-left: 10px; margin-top:10px; box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);">
     <%= form_for(@charity) do |f| %>
         <div class="form-group">
             <%=f.label :name %>
             <%=f.text_field :name %>
         </div>
         <div class="form-group">
-            <%=f.label :description %>
-            <%=f.text_field :description %>
-        </div>
-        <div class="form-group">
             <%=f.label :url %>
             <%=f.url_field :url %>
+        </div>
+        <div class="form-group">
+            <%=f.label :description %>
+            <%=f.text_area :description, :rows => 10, style: 'width:80%;' %>
         </div>
         <div class="btn" class="action">
         <%= f.submit %>

@@ -1,7 +1,7 @@
 class ChallengesController < ApplicationController
     before_action :authenticate!, except: [:index, :show]
     # before_action :correct_user, only: [:edit, :update, :destroy]
-
+   
 
     def index
         @challenges  = Challenge.all
@@ -28,11 +28,14 @@ class ChallengesController < ApplicationController
 
     def edit
         @challenge = Challenge.find(params[:id])
+        @challenge.end_date = @challenge.start_date + 7.days
     end
 
     def update 
         @challenge = Challenge.find(params[:id])
+        
         if @challenge.update(challenge_params)
+
             redirect_to challenge_path(@challenge)
         else
             render :edit
@@ -51,6 +54,8 @@ class ChallengesController < ApplicationController
     def challenge_params 
         params.require(:challenge).permit(:name, :activity_name, :activity_reps, :start_date, :end_date, :group_id, :charity_id)
     end 
+
+    
 
 
     # def correct_group_user

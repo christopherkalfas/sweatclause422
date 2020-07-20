@@ -7,6 +7,7 @@ class Challenge < ApplicationRecord
     validates :activity_name, presence: true
     validates :activity_reps, numericality: { message: "Must enter a number" }, length: {maximum: 10}
     validates :start_date, :end_date, presence: true
+    validate :end_date_after_start_date?
 
 
     validates :group_id, presence: true
@@ -15,6 +16,10 @@ class Challenge < ApplicationRecord
     def rank_trackers
         self.trackers.sort_by {|tracker| tracker.total_reps}.reverse!
     end 
+
+    def one_week
+        self.end_date = Date.start_date+3.to_s
+    end
 
 
     # def high_score
@@ -30,7 +35,7 @@ class Challenge < ApplicationRecord
     # end
 
     private
-    def end_date_after_start_date
+    def end_date_after_start_date?
         return if end_date.blank? || start_date.blank?
         if end_date < start_date
             errors.add(:end_date, "must be after the start date")

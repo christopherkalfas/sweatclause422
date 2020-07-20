@@ -25,14 +25,14 @@ class CharitiesController < ApplicationController
     end
 
     def edit
-        @charty = Charity.find(params[:id])
+        @charity = Charity.find(params[:id])
     end
     
     def update
         @charity = Charity.find(params[:id])
         if @charity.update(charity_params)
             flash[:success] = "Charity was successfully updated"
-            redirect_to charity_path(@charity)
+            redirect_to charities_path
         else
             flash[:error] = "Something went wrong"
             render :edit

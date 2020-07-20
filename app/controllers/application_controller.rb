@@ -42,6 +42,7 @@ class ApplicationController < ActionController::Base
         !current_user.trackers.exists?(challenge_id: challenge.id)
       end 
 
+
       def challenge_member(challenge)
         current_user.challenges.includes?(challenge.id)
       end
