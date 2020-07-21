@@ -13,6 +13,9 @@ class Challenge < ApplicationRecord
     validates :group_id, presence: true
     validates :charity_id, presence: true 
 
+    before_save :update_end_date
+    before_update :update_end_date
+
     def rank_trackers
         self.trackers.sort_by {|tracker| tracker.total_reps}.reverse!
     end 
@@ -21,7 +24,11 @@ class Challenge < ApplicationRecord
         self.end_date = Date.start_date+3.to_s
     end
 
+        
+    def update_end_date
+       self.end_date = self.start_date + 7.days
 
+    end 
     # def high_score
     #     if self.trackers.empty?
     #         return "No trackers yet"

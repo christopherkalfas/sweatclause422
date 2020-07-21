@@ -1,7 +1,6 @@
 class ChallengesController < ApplicationController
     before_action :authenticate!, except: [:index, :show]
     # before_action :correct_user, only: [:edit, :update, :destroy]
-   
 
     def index
         @challenges  = Challenge.all
@@ -28,7 +27,6 @@ class ChallengesController < ApplicationController
 
     def edit
         @challenge = Challenge.find(params[:id])
-        @challenge.end_date = @challenge.start_date + 7.days
     end
 
     def update 
@@ -56,7 +54,10 @@ class ChallengesController < ApplicationController
     end 
 
     
+    def update_end_date
+        @challenge.end_date = @challenge.start_date + 7.days
 
+    end 
 
     # def correct_group_user
     #     @challenge = Challenge.find(pramas[:id])
