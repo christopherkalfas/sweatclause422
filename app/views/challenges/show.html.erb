@@ -15,18 +15,18 @@
               </h5>
           </div>
           <div class="row">
-            <div class="col-4">
+            <div class="col-4 rounded p-2" style="background-color: #DCDCDC;">
               <h5 class="card-text">
-                <strong>Activity:</strong> <em><%= @challenge.activity_name %></em>
+                <strong>Activity:</strong> <em class="text-info"><%= @challenge.activity_name %></em>
               </h5>
               <h5 class="card-text">
                 <strong>Goal Activity Reps</strong>
-                <%= @challenge.activity_reps %>
+                <em class="text-info"><%= @challenge.activity_reps %></em>
               </h5>
               <h6 class="card-title">
                   Loser Donates to:
                 </h6>
-                <h5 class="card-text">
+                <h5 class="card-text text-info">
                   <%= @challenge.charity.name%>
                 </h5>
                 <p class="card-text">
@@ -36,8 +36,9 @@
                   Donate Now!
                 </a>
             </div>
-            <div class="col-4">
-              <h3 class="card-title">
+          
+            <div class="col-3 rounded p-2 ml-2" style="background-color: #DCDCDC;">
+              <h4 class="card-title">
               <% if logged_in? %>
                 <%= link_to(@challenge.group.name, group_path(@challenge.group)) %>
               <% else %>
@@ -53,6 +54,30 @@
                     <li><h4><%= user.username %></h4></li>
                   <% end %>
                 </ul>
+      
+          
+            </div>
+
+            <div class="col-4">
+            <div class="card p-2" style="background-color: #DCDCDC;">
+              <h5 class="card-title text-success">Leader</h5>
+                <div class="card-text pb-3">
+                <% if @challenge.trackers.blank?%>
+                  <h6>No trackers yet</h6>
+                <%else%>
+                  <%= @challenge.high_score.user.username %> - <%= @challenge.high_score.total_reps %> reps
+                <%end%>
+                </div>
+              <h5 class="card-title text-danger border-top border-dark pt-1">Laziest</h5>
+                <div class="card-text">
+                <% if @challenge.trackers.blank?%>
+                  <h6>No trackers yet</h6>
+                <%else%>
+                  <%= @challenge.low_score.user.username %> - <%= @challenge.low_score.total_reps %> reps
+                <%end%>
+              </div>  
+              </div>
+                
           
             </div>
           </div>

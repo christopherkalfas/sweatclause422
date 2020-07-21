@@ -1,6 +1,7 @@
 class ChallengesController < ApplicationController
     before_action :authenticate!, except: [:index, :show]
     # before_action :correct_user, only: [:edit, :update, :destroy]
+  
 
     def index
         @challenges  = Challenge.all
@@ -18,6 +19,7 @@ class ChallengesController < ApplicationController
 
     def create 
         @challenge = Challenge.create(challenge_params)
+        @challenge.end_date = @challenge.start_date + 7.days
         if @challenge.save 
             redirect_to challenge_path(@challenge)
         else  

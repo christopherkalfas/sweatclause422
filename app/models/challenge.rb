@@ -15,30 +15,31 @@ class Challenge < ApplicationRecord
 
     before_save :update_end_date
     before_update :update_end_date
+    # before_create :update_end_date
 
     def rank_trackers
         self.trackers.sort_by {|tracker| tracker.total_reps}.reverse!
     end 
 
-    # def next_day(int)
-    #     (self.start_date.next_day.day(int))
-    # end
+  
         
     def update_end_date
-       self.end_date = self.start_date + 7.days
+        self.end_date = self.start_date + 7.days
 
     end 
-    # def high_score
-    #     if self.trackers.empty?
-    #         return "No trackers yet"
-    #     else 
-    #         self.trackers.max_by {|tracker| tracker.total_reps}
-    #     end
-    # end
 
-    # def low_score
-    #     self.trackers.min_by {|tracker| tracker.total_reps}
-    # end
+    def next_week
+        self.start_date.next_day(7)
+    end
+
+
+    def high_score
+        self.trackers.max_by {|tracker| tracker.total_reps}
+    end
+
+    def low_score
+        self.trackers.min_by {|tracker| tracker.total_reps}
+    end
 
     private
     def end_date_after_start_date?
