@@ -20,7 +20,7 @@
                 <strong>Activity:</strong> <em class="text-info"><%= @challenge.activity_name %></em>
               </h5>
               <h5 class="card-text">
-                <strong>Goal Activity Reps</strong>
+                <strong>Reps:</strong>
                 <em class="text-info"><%= @challenge.activity_reps %></em>
               </h5>
               <h6 class="card-title">
@@ -63,7 +63,7 @@
               <h5 class="card-title text-success">Leader</h5>
                 <div class="card-text pb-3">
                 <% if @challenge.trackers.blank?%>
-                  <h6>No trackers yet</h6>
+                  <h6>Apparently, none of you...</h6>
                 <%else%>
                   <%= @challenge.high_score.user.username %> - <%= @challenge.high_score.total_reps %> reps
                 <%end%>
@@ -71,7 +71,7 @@
               <h5 class="card-title text-danger border-top border-dark pt-1">Laziest</h5>
                 <div class="card-text">
                 <% if @challenge.trackers.blank?%>
-                  <h6>No trackers yet</h6>
+                  <h6>Everyone in <%=@challenge.group.name%></h6>
                 <%else%>
                   <%= @challenge.low_score.user.username %> - <%= @challenge.low_score.total_reps %> reps
                 <%end%>

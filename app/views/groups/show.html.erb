@@ -55,10 +55,13 @@
           <div class="card-footer">
             <h6>Remove Member</h6>  
                 <% @group.memberships.each do |membership| %>
-                  <div class="alert alert-danger w-25" style="color:white; text-decoration:none;">
-                      <%= link_to(membership.user.username, membership, method: :delete, data: {confirm: "Are you sure?"}) %>
+                  <div>
+                      <%= button_to(membership.user.username, membership, class: "btn btn-danger m-1", method: :delete, data: {confirm: "Are you sure?"}) %>
                   </div>
                 <% end%>
+            </div>
+            <div class="card-text mt-2">
+              <%= button_to("Destroy Group", @group, class: "btn btn-warning", method: :delete, data: { confirm: "Are you sure?"}) %>
             </div>
       </div>
     </div>
