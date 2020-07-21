@@ -20,10 +20,9 @@ class Challenge < ApplicationRecord
         self.trackers.sort_by {|tracker| tracker.total_reps}.reverse!
     end 
 
-    def one_week
-        self.end_date = Date.start_date+3.to_s
-    end
-
+    # def next_day(int)
+    #     (self.start_date.next_day.day(int))
+    # end
         
     def update_end_date
        self.end_date = self.start_date + 7.days
