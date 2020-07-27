@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   get "/updatereps", to: "trackers#edit"
 
   resources :users 
-  resources :groups
-  resources :challenges
+  resources :groups do 
+    resources :challenges
+  end 
+  resources :challenges 
   resources :trackers
   resources :charities
   resources :password_resets

@@ -22,6 +22,9 @@ class User < ApplicationRecord
         end while User.exists?(column => self[column])
     end 
 
+    def self.non_admins
+        self.all.select {|user| user.admin == false}
+    end
 
 
 end

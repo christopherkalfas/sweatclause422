@@ -66,6 +66,9 @@
                   <h6>Apparently, none of you...</h6>
                 <%else%>
                   <%= @challenge.high_score.user.username %> - <%= @challenge.high_score.total_reps %> reps
+                  <p>
+                    <%= @challenge.activity_reps - @challenge.high_score.total_reps %> reps to reach goal
+                  </p>
                 <%end%>
                 </div>
               <h5 class="card-title text-danger border-top border-dark pt-1">Laziest</h5>
@@ -74,6 +77,9 @@
                   <h6>Everyone in <%=@challenge.group.name%></h6>
                 <%else%>
                   <%= @challenge.low_score.user.username %> - <%= @challenge.low_score.total_reps %> reps
+                  <p>
+                    <%= @challenge.activity_reps - @challenge.low_score.total_reps %> reps to reach goal
+                  </p>
                 <%end%>
               </div>  
               </div>
