@@ -51,7 +51,7 @@
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
           
-          <h6><%= button_to("Add New Member", edit_group_path(@group), class: "btn btn-info") %></h6>
+          <h6><%= link_to("Add New Member", edit_group_url(@group)) %></h6>
           
           <div class="card-footer">
             <h6>Remove Member</h6>  
