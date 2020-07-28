@@ -36,6 +36,22 @@
   </table>
   </div>
 
+  <div>
+  <table class="table table-striped">
+    <thead>
+      <th class="card-title">Charities</th>
+    </thead>
+    <% @group.charities.each do |charity| %>
+      <tr class="card-text">
+        <td><a href=<%= charity.url%>>
+          <%= charity.name%>
+        </a></td>
+      </tr>
+    <% end %>
+  
+  </table>
+  </div>
+
 
   <% if can? :update, @group %>
     <div id="accordion" style="margin-top: 15px;" >
@@ -52,7 +68,7 @@
       <div class="card-body">
           
           <h6><%= link_to("Add New Member", edit_group_url(@group)) %></h6>
-          
+          <%=link_to("Add New Challenge", new_challenge_url)%>
           <div class="card-footer">
             <h6>Remove Member</h6>  
                 <% @group.memberships.each do |membership| %>

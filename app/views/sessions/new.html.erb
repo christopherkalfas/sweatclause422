@@ -1,4 +1,4 @@
-<div class="card w-50">
+<div class="card w-50" style="position:relative;">
 <h2 class="card-header bg-dark text-light">Login</h2>
 <p id="notice">
     <%= notice %>
@@ -26,7 +26,7 @@
     <%= label_tag("Password: ") %>
     <%= password_field_tag(:password) %>
   </div>
-  <div class="form-group" style="margin-left: 280px; font-size:18px;">
+  <div class="form-group" style="position: absolute; bottom: 46px; right:16px;"">
     <%= submit_tag("Login", class: "btn btn-primary") %>
   </div>
   <div class="form-group ml-4">
@@ -34,7 +34,7 @@
   </div>
   <div class="form-group ml-4">
     <%= label_tag :remember_me %>
-      <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+    <%= check_box_tag :remember_me, 1, params[:remember_me] %>
   </div>
 <% end %>
 
