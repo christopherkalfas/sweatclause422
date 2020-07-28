@@ -2,38 +2,40 @@
     style="background-color:#e9ecef; padding:8px; margin-left: 10px;width: 816px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);">
 <%= form_for(@tracker) do |f| %>
+    <h4>Challenge: <%=@tracker.challenge.name%></h4>
     <div class="form-group pt-2">
-        <%= f.label "Sunday: "%>
+        <%= f.label @tracker.challenge_start_date %>
         <%= f.number_field :sunday_reps, maxlength: 10%>
     </div>
     <div class="form-group">
-        <%= f.label "Monday: "%>
+        <%= f.label @tracker.challenge_day_two%>
         <%= f.number_field :monday_reps, maxlength: 10%>
     </div>
     <div class="form-group">
-        <%= f.label "Tuesday: "%>
+        <%= f.label @tracker.challenge_day_three%>
         <%= f.number_field :tuesday_reps, maxlength: 10%>
     </div>
     <div class="form-group">
-        <%= f.label "Wednesday: "%>
+        <%= f.label @tracker.challenge_day_four%>
         <%= f.number_field :wednesday_reps, maxlength: 10%>
     </div>
     <div class="form-group">
-        <%= f.label "Thursday: "%>
+        <%= f.label @tracker.challenge_day_five%>
         <%= f.number_field :thursday_reps, maxlength: 10%>
     </div>
     <div class="form-group">
-        <%= f.label "Friday: "%>
+        <%= f.label @tracker.challenge_day_six%>
         <%= f.number_field :friday_reps, maxlength: 10%>
     </div>
     <div class="form-group">
-        <%= f.label "Saturday: "%>
+        <%= f.label @tracker.challenge_end_date%>
         <%= f.number_field :saturday_reps, maxlength: 10%>
     </div>
     <br>
     <div class="form-group">
-        <label>Challenge</label>
-        <%= f.collection_select(:challenge_id, Challenge.all, :id, :name) %>
+    <%= f.hidden_field :challenge_id %>
+        <%# <label>Challenge</label>
+        <%= f.collection_select(:challenge_id, Challenge.all, :id, :name) %> 
     </div>
 
     <%= f.submit("Submit", class: "btn btn-success" ) %>

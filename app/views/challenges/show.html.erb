@@ -153,7 +153,7 @@
 <% if can? :manage, @challenge%>
   <div class="card-footer">
   <% if my_tracker?(@challenge)%>
-      <%= link_to("Create your Tracker", new_tracker_path) %>
+      <%= link_to("Create your Tracker", new_tracker_path(challenge_id: @challenge.id)) %>
    <% end %>
   </div>
   <% end %>

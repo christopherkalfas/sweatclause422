@@ -42,7 +42,7 @@
     <p class="lead"><em>Get in Shape or Donate</em></p>
     <% if logged_in? %>
     <p class="lead" style="position: absolute; bottom: 2px; right:20px;">
-    Signed in as <%= current_user.username %>
+    Signed in as <strong><%= current_user.username %></strong>
     </p>
     <% end %>
   </div>

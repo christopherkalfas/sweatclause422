@@ -11,8 +11,9 @@ class TrackersController < ApplicationController
     
     
     def new
-        @tracker = Tracker.new
-        @challenge = Challenge.all
+        @tracker = Tracker.new(challenge_id: params[:challenge_id])
+        @tracker.challenge_info
+        # @challenge = Challenge.all
     end
 
     def create
@@ -27,6 +28,7 @@ class TrackersController < ApplicationController
 
     def edit
         @tracker = Tracker.find(params[:id])
+        @tracker.challenge_info
     end
     
     def update 
