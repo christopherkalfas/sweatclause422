@@ -140,9 +140,9 @@
           <td><%= track.saturday_reps%></td>
           <td><%= track.total_reps%></td>
           <td>
-            <% if can? :manage, @challenge%>
+           
               <%= link_to  "+", edit_tracker_path(track.id) %>
-            <% end %>
+            
           </td>
     </tr>
    
@@ -150,13 +150,13 @@
     <% end %>
   </table>
  
-<% if can? :manage, @challenge%>
+<%# <% if can? :manage, @challenge%>
   <div class="card-footer">
   <% if my_tracker?(@challenge)%>
       <%= link_to("Create your Tracker", new_tracker_path(challenge_id: @challenge.id)) %>
    <% end %>
   </div>
-  <% end %>
+  <%# <% end %> 
 </div>
 </div>
 </div>
