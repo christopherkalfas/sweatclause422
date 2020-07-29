@@ -68,7 +68,7 @@
       <div class="card-body">
           
           <h6><%= link_to("Add New Member", edit_group_url(@group)) %></h6>
-          <%=link_to("Add New Challenge", new_challenge_url)%>
+          <%=link_to("Add New Challenge", new_challenge_url(group_id: @group.id))%>
           <div class="card-footer">
             <h6>Remove Member</h6>  
                 <% @group.memberships.each do |membership| %>

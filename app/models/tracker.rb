@@ -15,7 +15,7 @@ class Tracker < ApplicationRecord
         challenge_day_four
         challenge_day_five
         challenge_day_six
-        challenge_end_date
+        challenge_day_seven
     end 
     def challenge_start_date
         self.challenge.start_date.strftime("%a #{self.challenge.start_date.day.ordinalize}")
@@ -41,8 +41,9 @@ class Tracker < ApplicationRecord
         self.challenge.start_date.next_day(5).strftime("%a #{self.challenge.start_date.next_day(5).day.ordinalize}")
     end
 
-    def challenge_end_date
-        self.challenge.end_date.strftime("%a #{self.challenge.end_date.day.ordinalize}")
+    def challenge_day_seven
+        self.challenge.start_date.next_day(6).strftime("%a #{self.challenge.start_date.next_day(6).day.ordinalize}")
+
     end 
 
     def total_reps

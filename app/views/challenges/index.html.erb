@@ -9,9 +9,7 @@
             <li class="list-group-item"><h4><%= link_to(challenge.name, challenge_path(challenge)) %></h4></li>
         <% end %>
     </ul>
-<% if can? :manage, @challenge %>    
-<div class="card-footer"><%= link_to('Add a Challenge', new_challenge_path) %></div>
-<%end %>
+
 </div>
 
 

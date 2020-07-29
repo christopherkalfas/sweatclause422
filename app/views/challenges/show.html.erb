@@ -121,7 +121,7 @@
       <th scope="col">
         <%= @challenge.start_date.next_day(5).strftime("%a #{@challenge.start_date.next_day(5).day.ordinalize}")%>
       </th>
-      <th scope="col"><%= @challenge.start_date.strftime("%a #{@challenge.end_date.day.ordinalize }")%></th>
+      <th scope="col"><%= @challenge.end_date.strftime("%a #{@challenge.end_date.day.ordinalize }")%></th>
       <th scope="col">Total</th>
       <% if can? :manage, @challenge%>
       <th scope="col">Add Reps</th>

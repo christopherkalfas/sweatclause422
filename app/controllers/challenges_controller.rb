@@ -12,14 +12,14 @@ class ChallengesController < ApplicationController
     end
 
     def new
-        @challenge  = Challenge.new
-        @groups = current_user.owned_groups
+        @challenge  = Challenge.new(group_id: params[:group_id])
+        # @groups = current_user.owned_groups
         @charities = Charity.all
     end
 
     def create 
         @challenge = Challenge.create(challenge_params)
-        @challenge.end_date = @challenge.start_date + 7.days
+        @challenge.end_date = @challenge.start_date + 6.days
         if @challenge.save 
             redirect_to challenge_path(@challenge)
         else  
@@ -57,7 +57,7 @@ class ChallengesController < ApplicationController
 
     
     def update_end_date
-        @challenge.end_date = @challenge.start_date + 7.days
+        @challenge.end_date = @challenge.start_date + 6.days
 
     end 
 

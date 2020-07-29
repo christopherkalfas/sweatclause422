@@ -24,12 +24,12 @@ class Challenge < ApplicationRecord
   
         
     def update_end_date
-        self.end_date = self.start_date + 7.days
+        self.end_date = self.start_date + 6.days
 
     end 
 
     def next_week
-        self.start_date.next_day(7)
+        self.start_date.next_day(6)
     end
 
 
