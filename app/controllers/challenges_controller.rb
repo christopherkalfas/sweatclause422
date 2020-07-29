@@ -1,5 +1,5 @@
 class ChallengesController < ApplicationController
-    before_action :authenticate!, except: [:index, :show]
+    before_action :authenticate!, except: [:index]
     # before_action :correct_user, only: [:edit, :update, :destroy]
   
 
