@@ -31,6 +31,7 @@ class UsersController < ApplicationController
 
     def edit 
         @user = User.find(params[:id])
+        @user.profile_pic.attach(params[:profile_pic])
     end 
 
     def update 
@@ -53,7 +54,7 @@ class UsersController < ApplicationController
     private 
 
     def user_params 
-        params.require(:user).permit(:name, :username, :password, :email, :auth_token, :password_reset_token, :password_reset_sent_at)
+        params.require(:user).permit(:name, :username, :password, :email, :auth_token, :password_reset_token, :password_reset_sent_at, :profile_pic)
     end
 
     def correct_user

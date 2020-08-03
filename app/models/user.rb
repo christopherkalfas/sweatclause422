@@ -5,6 +5,7 @@ class User < ApplicationRecord
     has_many :owned_groups, foreign_key: 'owner_id', class_name: 'Group'
     has_many :trackers
     has_many :challenges, through: :trackers
+    has_one_attached :profile_pic
 
 
     validates :username, presence: true, uniqueness: true, :on => :create

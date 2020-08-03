@@ -13,6 +13,10 @@
     <strong>Username:</strong>
     <%= @user.username %>
   </h5>
+
+  <% if @user.profile_pic.attached?%>
+  <image src="<%=(url_for(@user.profile_pic))%>" class="img-thumbnail rounded-circle" style="height: 100px; width: 100px;">
+  <% end %>
   
     <h5>
       <strong>Group:</strong>

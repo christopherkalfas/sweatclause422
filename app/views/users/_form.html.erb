@@ -13,7 +13,11 @@
       </ul>
     </div>
   <% end %>
-  
+    <div class="form-group row" >
+      <h4><%= form.label "Profile Photo" %></h4>
+      
+        <%= form.file_field :profile_pic %>
+      </div>
     <div class="form-group row" >
       <h4><%= form.label :name %></h4>
       
