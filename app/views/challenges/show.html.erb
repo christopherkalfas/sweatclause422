@@ -95,6 +95,25 @@
 
 
 
+<% if challenge_over?(@challenge)%>
+<div class="card shadow-lg  mt-3" style="border: 1px; text-align: center;">  
+  <div class="card-header bg-danger text-light">
+    <h2>
+      Challenge Complete
+    </h2>
+  </div>
+  <div class="card-body bg-light">
+    <div class="card-text ">
+      <h4>Challenge Loser:</h4>
+      <h2 class="text-danger" ><%=@challenge.low_score.user.username%></h2> 
+      <h4>Please donate to, </h4>
+      <a href=<%=@challenge.charity.url%> class="card-text">
+          <h3><%= @challenge.charity.name %></h3>
+      </a>
+    </div>
+ </div>   
+</div>
+<% else %>
 <div class="row mx-auto">
 <div class="col-md"style="margin-top:20px;">
 <div class="card shadow-lg rounded" style="border: 1px;">
@@ -106,6 +125,7 @@
     Challenge Tracker
   </h2>
   </tr>
+
     <thead>
       <th scope="col">Member</th>
       <th scope="col"><%= @challenge.start_date.strftime("%a #{@challenge.start_date.day.ordinalize}")%></th>
@@ -140,7 +160,6 @@
           <td><%= track.saturday_reps%></td>
           <td><%= track.total_reps%></td>
           <td>
-           
               <%= link_to  "+", edit_tracker_path(track.id) %>
             
           </td>
@@ -149,6 +168,7 @@
     </tbody>
     <% end %>
   </table>
+  <% end %>
  
 <%# <% if can? :manage, @challenge%>
   <div class="card-footer">
