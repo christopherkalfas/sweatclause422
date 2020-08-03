@@ -2,15 +2,18 @@
        <h2> Charities </h2>
     </div>
 
-<div class="card-group">
+<div class="card-group" style="width: 40%;">
 <% @charities.each do |charity| %>
-    <div class="card rounded" class="charity-card"
+    <div class="card rounded pt-0" 
         style="border:0px solid #9a9b9c; 
             display:flex;
             margin: 30px 10px 30px 10px;
-            padding: 8px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);"
     >
+    <% if charity.photo.attached?%>
+        <img src="<%=(url_for(charity.photo))%>" class="card-img-top mb-1" alt="charity-photo" style="height: 300px;">
+    <% end %>
+        <div class="card-body">    
         <h5 class="card-title">
             <%= charity.name %>
         </h5>
@@ -20,7 +23,7 @@
         <a href=<%=charity.url%> class="card-text">
             Donate Now!
         </a>
-
+        </div>
         <% if can? :manage, :all %>
             <div class="card-footer mt-1">
                 <%= link_to("Edit Charity", edit_charity_path(charity.id))%> |

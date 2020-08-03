@@ -26,6 +26,7 @@ class CharitiesController < ApplicationController
 
     def edit
         @charity = Charity.find(params[:id])
+        @charity.photo.attach(params[:photo])
     end
     
     def update
@@ -48,7 +49,7 @@ class CharitiesController < ApplicationController
     private
 
     def charity_params
-        params.require(:charity).permit(:name, :description, :url)
+        params.require(:charity).permit(:name, :description, :url, :photo)
     end
     
     
