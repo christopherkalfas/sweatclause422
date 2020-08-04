@@ -7,15 +7,20 @@
       </h2>
         <div class="card-body">
           <div class="row">
+            <div class="col-3">
               <h5 class="card-title pb-2">
                 <em>
                   <%= @challenge.start_date.strftime("%a %b #{@challenge.start_date.day.ordinalize}, %Y") %> -
                   <%= @challenge.end_date.strftime("%a %b #{@challenge.end_date.day.ordinalize},  %Y") %>
-                </em>
+                </em> 
               </h5>
+            </div>
+            <div class="col-2">
+              <h5>Group: <%= link_to(@challenge.group.name, group_path(@challenge.group))%></h5>
+            </div>
           </div>
           <div class="row">
-            <div class="col-4 rounded p-2" style="background-color: #DCDCDC;">
+            <div class="col-6 rounded p-2" style="background-color: #DCDCDC;">
               <h5 class="card-text">
                 <strong>Activity:</strong> <em class="text-info"><%= @challenge.activity_name %></em>
               </h5>
@@ -26,37 +31,20 @@
               <h6 class="card-title">
                   Loser Donates to:
                 </h6>
+              <% if @challenge.charity.photo.attached?%>
+                <a href=<%=@challenge.charity.url%> class="card-text">
+                  <img src="<%=(url_for(@challenge.charity.photo))%>" class="rounded-circle"  alt="charity-photo" style="height: 100px; width:100px;">
+                </a>
+              <% else %>
                 <h5 class="card-text text-info">
                   <%= @challenge.charity.name%>
                 </h5>
+              <% end %>
                 <p class="card-text">
                   <em><%= @challenge.charity.description %></em>
                 </p>
-                <a href=<%=@challenge.charity.url%> class="card-text">
-                  Donate Now!
-                </a>
             </div>
-          
-            <div class="col-3 rounded p-2 ml-2" style="background-color: #DCDCDC;">
-              <h4 class="card-title">
-              <% if logged_in? %>
-                <%= link_to(@challenge.group.name, group_path(@challenge.group)) %>
-              <% else %>
-                <h3><%= @challenge.group.name %><h3>
-              <% end %>
-              </h3>
-              <h6 class="card-title">
-                <strong>Particpating Members: </strong>
-              </h6>
-              <p class="card-text">
-                <ul>
-                  <% @challenge.group.users.each do |user| %>
-                    <li><h4><%= user.username %></h4></li>
-                  <% end %>
-                </ul>
-      
-          
-            </div>
+
 
             <div class="col-4">
             <div class="card p-2" style="background-color: #DCDCDC;">
@@ -108,7 +96,9 @@
       <h2 class="text-danger" ><%=@challenge.low_score.user.username%></h2> 
       <h4>Please donate to, </h4>
       <a href=<%=@challenge.charity.url%> class="card-text">
-          <h3><%= @challenge.charity.name %></h3>
+        <% if @challenge.charity.photo.attached?%>
+          <img src="<%=(url_for(@challenge.charity.photo))%>"  alt="charity-photo" style="height: 200px; width:200px;">
+        <% end %>
       </a>
     </div>
  </div>   
@@ -150,7 +140,13 @@
     <tbody>
     <% @challenge.rank_trackers.each do |track| %>
       <tr>
+        <% if track.user.profile_pic.attached?%>
+      <td><image src="<%=(url_for(track.user.profile_pic))%>" class="rounded-circle" style="height: 40px; width: 40px;">
+          <%= track.user.username %>
+      </td>
+        <% else %>
           <td scope="row"> <%= track.user.username unless track.user.blank? %></td>
+        <% end %> 
           <td><%= track.sunday_reps%></td>
           <td><%= track.monday_reps%></td>
           <td><%= track.tuesday_reps%></td>

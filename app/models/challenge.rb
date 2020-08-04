@@ -2,6 +2,7 @@ class Challenge < ApplicationRecord
     belongs_to :group
     belongs_to :charity
     has_many :trackers
+    has_one :pledge 
 
     validates :name, presence: true
     validates :activity_name, presence: true

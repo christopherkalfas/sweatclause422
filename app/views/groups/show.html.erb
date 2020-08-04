@@ -17,7 +17,7 @@
     <% @group.users.each do |user| %>
   <tr class="card-text">
     <% if user.profile_pic.attached?%>
-      <td><image src="<%=(url_for(user.profile_pic))%>" class="img-thumbnail rounded-circle" style="height: 100px; width: 100px;"><%= user.name %></td>
+      <td><image src="<%=(url_for(user.profile_pic))%>" class="rounded-circle" style="height: 100px; width: 100px;"><%= user.name %></td>
       <% else %>
       <td><%= user.name %></td>
     <% end %>

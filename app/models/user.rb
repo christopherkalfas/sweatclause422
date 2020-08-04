@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_many :trackers
     has_many :challenges, through: :trackers
     has_one_attached :profile_pic
+    has_many :pledges
 
 
     validates :username, presence: true, uniqueness: true, :on => :create

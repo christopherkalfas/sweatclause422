@@ -4,6 +4,7 @@ class Group < ApplicationRecord
     has_many :charities, through: :challenges
     has_many :users, through: :memberships
     belongs_to :owner, class_name: 'User', foreign_key: :owner_id
+    has_many :pledges
 
     validates :name, presence: true, uniqueness: true
 
