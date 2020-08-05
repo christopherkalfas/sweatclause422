@@ -16,6 +16,18 @@ class Group < ApplicationRecord
         User.select {|user| user.groups.pluck(:name).exclude?(self.name)}
     end
 
+    def all_donations
+        Pledge.all.select {|pledge| pledge.group_id == self.id}
+    end 
+
+    def donation_amounts
+        all_donations.collect {|donat| donat.amount}
+    end
+
+    def donation_total_value
+        donation_amounts.reduce()
+    end 
+
 
 
 end

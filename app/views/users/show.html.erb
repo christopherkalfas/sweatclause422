@@ -48,8 +48,38 @@
             </h6>
           </li>
       <% end %>
-  
       </ul>
+
+      <% @user.pledges.each do |pledge|%>
+      <table class='table table-striped rounded shadow-md'>
+        <thead class="bg-dark text-light ">
+          <th>Chairty</th>
+          <th>Donation</th>
+          <th>Group</th>
+          <th>Challenge</th>
+          <th>Date</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%=pledge.charity.name%>
+            </td>
+            <td>
+              $<%=pledge.amount%>.00
+            </td>
+            <td>
+              <%=pledge.group.name%>
+            </td>
+            <td>
+              <%=pledge.challenge.name%>
+            </td>
+            <td>
+              <%=pledge.challenge.end_date.strftime("%m/%d/%Y")%>
+            </td>
+          </tr>
+      <% end %>
+        </tbody>
+      </table>
     
   <h5><%= link_to 'Edit', edit_user_path(@user) %> |
   <%= link_to 'Delete Profile', @user, method: :delete, data: {confirm: "Are you sure?"}%></h5>

@@ -40,6 +40,7 @@
                   <%= @challenge.charity.name%>
                 </h5>
               <% end %>
+                <h5 class="card-text">Donation Amount: $<%=@challenge.pledge_amount%>.00 USD</h5>
                 <p class="card-text">
                   <em><%= @challenge.charity.description %></em>
                 </p>
@@ -94,12 +95,13 @@
     <div class="card-text ">
       <h4>Challenge Loser:</h4>
       <h2 class="text-danger" ><%=@challenge.low_score.user.username%></h2> 
-      <h4>Please donate to, </h4>
+      <h4>Please donate <div class="text-info">$<%=@challenge.pledge_amount%>.00</div> </h4>
       <a href=<%=@challenge.charity.url%> class="card-text">
         <% if @challenge.charity.photo.attached?%>
           <img src="<%=(url_for(@challenge.charity.photo))%>"  alt="charity-photo" style="height: 200px; width:200px;">
         <% end %>
       </a>
+      <%= link_to("Fulfill Donation Pledge!", new_pledge_url(challenge_id: @challenge.id, group_id: @challenge.group_id, charity_id: @challenge.charity_id, user_id: @challenge.low_score.user.id, amount: @challenge.pledge_amount))%>
     </div>
  </div>   
 </div>

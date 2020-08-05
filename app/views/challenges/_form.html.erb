@@ -35,6 +35,10 @@
         <%=  f.label :charity_id, "Charity" %>
         <%= f.collection_select(:charity_id, Charity.all, :id, :name) %>
       </div>
+      <div class="form-group container-sm rounded p-2">
+      <%= f.label "Pledge $" %>
+      <%= f.number_field :pledge_amount, required: true, maxlength: 5, :style=>"width:8%;" %>.00 USD
+    </div>
       <br>
       <div class="form-group p-2">
       <%= f.hidden_field :group_id%>

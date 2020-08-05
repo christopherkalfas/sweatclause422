@@ -1,0 +1,37 @@
+<form class="card-sm rounded bg-light"
+    style="background-color:#e9ecef; padding:8px; margin-left: 10px;width: 816px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); position: relative;">
+    <%= form_for @pledge do |f| %>
+    <div class="card-body">
+      
+        <%= f.hidden_field :user_id %>
+        <div class="card-header">   
+            <h3><%=@pledge.challenge_group_info%></h3>
+            <%= f.hidden_field :group_id %>
+        
+            <%= f.hidden_field :challenge_id %>
+        </div>
+    </div>
+    <div class="card-text">
+       <%= f.label :id_name, "text" %>
+       <p>Please follow the link to the chairty's donation page. Screen shot your receipt and upload it below.</p>
+        <%= f.hidden_field :charity_id %>
+    </div>
+    <h6 class="card-text">
+    Pledge Amount $<%= @pledge.challenge.pledge_amount.to_s %>.00
+    <%= f.hidden_field :amount, :value => @pledge.challenge_pledge  %>
+    </h6>
+    <div class="form-row-inline pt-2">
+        <%= f.label "Upload"%>
+    </div>
+        <%= f.file_field :donation_image %>
+    </div>
+    <br>
+    <br>
+    <div class="form-row">
+        <div class="actions" style="position: absolute; bottom: 10px; right:20px;">
+            <%= f.submit("Submit", class: "btn btn-success" ) %>
+        </div>
+    </div>
+    <% end %>
+</form>

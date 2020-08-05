@@ -4,20 +4,21 @@
   <h2 class="card-header rounded bg-dark text-light" >
     <%= @group.name %>
   </h2>
-
-  <h6 style="margin:8px;">Commissioner: <em><%=@group.owner.username%></em></h6>
-
+  <div class="row">
+  <h6  class="col-8" style="margin:8px;">Commissioner: <em><%=@group.owner.username%></em></h6>
+  <h6 class="col-3" style="margin:8px;">Donation Total:<em> $<%=@group.donation_total_value%>.00 </em></h6>
+</div>
 
 <div >
 <table class="table table-striped">
   <thead>
-    <th class="card-title">Members</th>
+    <th class="card-title bg-dark text-light rounded">Members</th>
   </thead>
 
     <% @group.users.each do |user| %>
   <tr class="card-text">
     <% if user.profile_pic.attached?%>
-      <td><image src="<%=(url_for(user.profile_pic))%>" class="rounded-circle" style="height: 100px; width: 100px;"><%= user.name %></td>
+      <td><image src="<%=(url_for(user.profile_pic))%>" class="rounded-circle" style="height: 70px; width: 70px;"> <%= user.name %></td>
       <% else %>
       <td><%= user.name %></td>
     <% end %>
@@ -26,34 +27,35 @@
     <% end %>
   </table>
 </div>
-<div>
-  <table class="table table-striped">
-    <thead>
-      <th class="card-title">Challenges</th>
-    </thead>
-    <% @group.challenges.each do |challenge| %>
-      <tr class="card-text">
-        <td><%= link_to(challenge.name, challenge_path(challenge)) %></td>
-      </tr>
+
+<div class="row row-cols-2">
+  <div class="col">
+    <table class="table table-striped">
+      <thead>
+        <th class="card-title bg-dark text-light rounded">Challenges</th>
+      </thead>
+      <% @group.challenges.each do |challenge| %>
+        <tr class="card-text">
+          <td><%= link_to(challenge.name, challenge_path(challenge)) %></td>
+        </tr>
     <% end %>
-  
   </table>
   </div>
-
-  <div>
-  <table class="table table-striped">
-    <thead>
-      <th class="card-title">Charities</th>
-    </thead>
-    <% @group.charities.each do |charity| %>
-      <tr class="card-text">
-        <td><a href=<%= charity.url%>>
-          <%= charity.name%>
-        </a></td>
-      </tr>
-    <% end %>
   
+  <div class="col">
+    <table class="table table-striped">
+      <thead>
+        <th class="card-title bg-dark text-light rounded">Charities</th>
+      </thead>
+      <% @group.charities.each do |charity| %>
+        <tr class="card-text">
+          <td><a href=<%= charity.url%>>
+            <%= charity.name%>
+          </a></td>
+        </tr>
+      <% end %>
   </table>
+  </div>
   </div>
 
 
@@ -70,9 +72,15 @@
 
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
-          
+        <div class="row row-cols-2">
+        <div class="col">
           <h6><%= link_to("Add New Member", edit_group_url(@group)) %></h6>
-          <%=link_to("Add New Challenge", new_challenge_url(group_id: @group.id))%>
+        </div>
+        <div class="col">
+          <h6><%=link_to("Add New Challenge", new_challenge_url(group_id: @group.id))%></h6>
+        </div>
+        </div>
+        </div>
           <div class="card-footer">
             <h6>Remove Member</h6>  
                 <% @group.memberships.each do |membership| %>

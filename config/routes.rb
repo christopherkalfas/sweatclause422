@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/users/:id/trackers', to: 'users#trackers'
   get "/profile", to: "users#show"
   get "/updatereps", to: "trackers#edit"
+  get "/charitypledge", to: "pledges#new"
+  post "/charitypledge", to: "pledges#create"
 
   resources :users 
   resources :groups
@@ -18,4 +20,5 @@ Rails.application.routes.draw do
   resources :charities
   resources :password_resets
   resources :memberships
+  resources :pledges
 end
