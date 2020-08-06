@@ -101,7 +101,10 @@
           <img src="<%=(url_for(@challenge.charity.photo))%>"  alt="charity-photo" style="height: 200px; width:200px;">
         <% end %>
       </a>
-      <%= link_to("Fulfill Donation Pledge!", new_pledge_url(challenge_id: @challenge.id, group_id: @challenge.group_id, charity_id: @challenge.charity_id, user_id: @challenge.low_score.user.id, amount: @challenge.pledge_amount))%>
+      <% if challenge_loser(@challenge)%>
+        <%# <%= link_to("Fulfill Donation Pledge!", new_pledge_path(challenge_id: @challenge.id, amount: @challenge.pledge_amount, group_id: @challenge.group, charity_id: @challenge.charity, user_id: @challenge.low_score.user.id))%> %>
+        <%= link_to("Fulfill Donation Pledge!", new_pledge_url(challenge_id: @challenge.id))%>
+      <% end %>
     </div>
  </div>   
 </div>
@@ -170,9 +173,11 @@
  
 <%# <% if can? :manage, @challenge%>
   <div class="card-footer">
+  <% if !challenge_over?(@challenge)%>
   <% if my_tracker?(@challenge)%>
       <%= link_to("Create your Tracker", new_tracker_path(challenge_id: @challenge.id)) %>
    <% end %>
+   <%end%>
   </div>
   <%# <% end %> 
 </div>

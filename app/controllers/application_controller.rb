@@ -51,6 +51,10 @@ class ApplicationController < ActionController::Base
         challenge.end_date < Time.now()
       end 
 
+      def challenge_loser(challenge)
+        current_user == challenge.low_score.user
+      end
+
      
 
       helper_method :current_user
@@ -58,6 +62,7 @@ class ApplicationController < ActionController::Base
       helper_method :logged_in?
       helper_method :my_tracker?
       helper_method :challenge_over?
+      helper_method :challenge_loser
 
 
 end

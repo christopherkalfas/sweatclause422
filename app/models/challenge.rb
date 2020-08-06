@@ -4,6 +4,8 @@ class Challenge < ApplicationRecord
     has_many :trackers
     has_one :pledge 
 
+    accepts_nested_attributes_for :pledge
+
     validates :name, presence: true
     validates :activity_name, presence: true
     validates :activity_reps, numericality: { message: "Must enter a number" }, length: {maximum: 10}
@@ -22,7 +24,6 @@ class Challenge < ApplicationRecord
         self.trackers.sort_by {|tracker| tracker.total_reps}.reverse!
     end 
 
-  
         
     def update_end_date
         self.end_date = self.start_date + 6.days

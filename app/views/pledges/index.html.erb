@@ -1,0 +1,6 @@
+<% @pledges.each do |pledge|%>
+    <%= pledge.user.username%>
+    <%= pledge.charity.name%>
+    <%= pledge.challenge.name%>
+   <p> Donated: $<%= pledge.amount%>.00</p>
+<% end %>

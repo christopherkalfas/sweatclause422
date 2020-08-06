@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/users/:id/trackers', to: 'users#trackers'
   get "/profile", to: "users#show"
   get "/updatereps", to: "trackers#edit"
-  get "/charitypledge", to: "pledges#new"
+  get "/new/amount/challenges/:id/charities/:id/groups/:id/users/:id", to: "pledges#new"
   post "/charitypledge", to: "pledges#create"
 
   resources :users 
