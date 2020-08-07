@@ -4,6 +4,8 @@ class Pledge < ApplicationRecord
     belongs_to :user
     has_one_attached :donation_image
 
+   validates :challenge_id, uniqueness: true
+
     accepts_nested_attributes_for :challenge
     accepts_nested_attributes_for :charity
 

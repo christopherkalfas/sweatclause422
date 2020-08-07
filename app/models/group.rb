@@ -1,6 +1,7 @@
 class Group < ApplicationRecord
     has_many :challenges
     has_many :memberships
+    has_many :pledges, through: :challenges
     has_many :charities, through: :challenges
     has_many :users, through: :memberships
     belongs_to :owner, class_name: 'User', foreign_key: :owner_id
@@ -16,20 +17,16 @@ class Group < ApplicationRecord
         User.select {|user| user.groups.pluck(:name).exclude?(self.name)}
     end
 
-    
-    def pledges
-        self.users.collect {|user| user.pledges}
-    end
-
-    def all_pledges
-        total = []
-        self.users.each do |user|
-            if user.pledges_total != nil
-            total << user.pledges_total
+    def pledges_total
+        total = 0
+        self.pledges.collect do |pledge|
+            if pledge.amount != nil || pledge != nil
+                total += pledge.amount 
             end 
         end 
-        total.join()
+        total
     end 
+   
 
     def uniq_charities 
         self.charities.uniq

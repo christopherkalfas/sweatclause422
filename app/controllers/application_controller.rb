@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
         current_user == challenge.low_score.user
       end
 
-     
+   
 
       helper_method :current_user
       helper_method :current_user?
@@ -63,6 +63,7 @@ class ApplicationController < ActionController::Base
       helper_method :my_tracker?
       helper_method :challenge_over?
       helper_method :challenge_loser
+      helper_method :challenge_donation_complete?
 
 
 end

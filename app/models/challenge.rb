@@ -20,6 +20,12 @@ class Challenge < ApplicationRecord
     before_update :update_end_date
     # before_create :update_end_date
 
+    def my_pledge_complete?
+        if self.pledge
+            self.pledge.donated
+        end
+    end
+
     def rank_trackers
         self.trackers.sort_by {|tracker| tracker.total_reps}.reverse!
     end 

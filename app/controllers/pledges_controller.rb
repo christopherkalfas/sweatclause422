@@ -13,6 +13,7 @@ class PledgesController < ApplicationController
     def create 
         @pledge = current_user.pledges.build(pledge_params)
         @pledge.charity_id = @pledge.challenge.charity_id
+        @pledge.amount = @pledge.challenge.pledge_amount
         @pledge.donated = true
         if @pledge.save 
             flash[:success] = "Pledge successfully created"

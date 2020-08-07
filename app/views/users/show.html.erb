@@ -80,10 +80,10 @@
       <% end %>
         </tbody>
       </table>
-    
-  <h5><%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Delete Profile', @user, method: :delete, data: {confirm: "Are you sure?"}%></h5>
-
+   <div class="card bg-dark w-25 shadow-lg" style="margin: 15px; padding:15px; margin-left:15px;"> 
+  <h5><%= link_to 'Edit', edit_user_path(@user), class: "btn btn-warning" %> |
+  <%= link_to 'Delete', @user, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%></h5>
+  </div>
 
 
 

@@ -6,7 +6,7 @@
   </h2>
   <div class="row">
   <h6  class="col-8" style="margin:8px;">Commissioner: <em><%=@group.owner.username%></em></h6>
-   <h6 class="col-3" style="margin:8px;">Donation Total:<em> $<%=@group.all_pledges%>.00 </em></h6>
+   <h6 class="col-3" style="margin:8px;">Donation Total:<em> $<%=@group.pledges_total%>.00 </em></h6>
 </div>
 
 <div >
@@ -36,7 +36,11 @@
       </thead>
       <% @group.challenges.each do |challenge| %>
         <tr class="card-text">
-          <td><%= link_to(challenge.name, challenge_path(challenge)) %></td>
+          <td><%= link_to(challenge.name, challenge_path(challenge)) %> 
+            <% if challenge_over?(challenge) %>
+            Donated $<%=challenge.pledge_amount%>.00
+            <% end %>
+          </td>
         </tr>
     <% end %>
   </table>

@@ -21,6 +21,10 @@ class ChallengesController < ApplicationController
         @challenge = Challenge.create(challenge_params)
         @challenge.end_date = @challenge.start_date + 6.days
         if @challenge.save 
+            @challenge.group.users.each do |user|
+                Tracker.create(challenge_id: "#{@challenge.id}", user_id: "#{user.id}")
+            end
+            flash[:success] = "Successfully created Challenge"    
             redirect_to challenge_path(@challenge)
         else  
             render :new 

@@ -1,10 +1,26 @@
+<div class="card bg-light rounded w-25" style="padding-left: 8px; margin-left:8px; margin-top:8px; box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); height: 360px; position:relative;">
 <%= form_for @pledge do |f| %>
-<h2><%=@pledge.challenge.name%></h2>
-<%= f.label :donation_image, "Upload" %>
-<%= f.file_field :donation_image %>
-<%= f.label :amount, "Donation Amount: $" %>
-<%= f.number_field :amount %>
-<%= f.hidden_field :challenge_id %>
-<%= f.hidden_field :charity_id %>
-<%= f.submit %>
+  
+    <div class="card-body">
+
+      <h2 class="card-title"><%=@pledge.challenge.name%></h2>
+      <h5> Pledge Amount: 
+        <div class="text-info">
+          $<%=@pledge.challenge.pledge_amount%>.00
+        </div>
+      </h5>
+    
+      <div class="form-group form-inline row mt-2 p-4 bg-primary text-light rounded-pill shadow-lg" >
+        <p div="card-text">Upload Image of Donation Reciept</p>
+        <%= f.file_field :donation_image %>
+      </div>
+
+      <%= f.hidden_field :challenge_id %>
+      <%= f.hidden_field :charity_id %>
+      
+      <div class="actions" style="margin-top: 6px; position: absolute; bottom: 10px; right:20px;">
+        <%= f.submit(class: "btn btn-success") %>
+      </div>
+    </div>
 <% end %>
+</div>

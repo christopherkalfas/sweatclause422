@@ -7,7 +7,7 @@
       </h2>
         <div class="card-body">
           <div class="row">
-            <div class="col-3">
+            <div class="col-4">
               <h5 class="card-title pb-2">
                 <em>
                   <%= @challenge.start_date.strftime("%a %b #{@challenge.start_date.day.ordinalize}, %Y") %> -
@@ -24,6 +24,7 @@
               <h5 class="card-text">
                 <strong>Activity:</strong> <em class="text-info"><%= @challenge.activity_name %></em>
               </h5>
+
               <h5 class="card-text">
                 <strong>Reps:</strong>
                 <em class="text-info"><%= @challenge.activity_reps %></em>
@@ -72,8 +73,6 @@
                 <%end%>
               </div>  
               </div>
-                
-          
             </div>
           </div>
         </div>
@@ -85,29 +84,58 @@
 
 
 <% if challenge_over?(@challenge)%>
-<div class="card shadow-lg  mt-3" style="border: 1px; text-align: center;">  
-  <div class="card-header bg-danger text-light">
-    <h2>
-      Challenge Complete
-    </h2>
+<div class="card shadow-lg mt-3" style="border: 1px; text-align: center; position:relative;">  
+    <%if @challenge.my_pledge_complete?%>
+  <div class="card-header bg-success text-light">
+      <h2>Donation Complete!</h2>
+      <% if @challenge.pledge.donation_image.attached?%>
+      <img src="<%=(url_for(@challenge.pledge.donation_image))%>" alt="donation-img">
+      <%end%>
+    <% else %>
+    <div class="card-header bg-warning">
+      <h2>Challenge Donation Pending</h2>
   </div>
   <div class="card-body bg-light">
     <div class="card-text ">
-      <h4>Challenge Loser:</h4>
-      <h2 class="text-danger" ><%=@challenge.low_score.user.username%></h2> 
-      <h4>Please donate <div class="text-info">$<%=@challenge.pledge_amount%>.00</div> </h4>
-      <a href=<%=@challenge.charity.url%> class="card-text">
-        <% if @challenge.charity.photo.attached?%>
-          <img src="<%=(url_for(@challenge.charity.photo))%>"  alt="charity-photo" style="height: 200px; width:200px;">
-        <% end %>
-      </a>
-      <% if challenge_loser(@challenge)%>
-        <%# <%= link_to("Fulfill Donation Pledge!", new_pledge_path(challenge_id: @challenge.id, amount: @challenge.pledge_amount, group_id: @challenge.group, charity_id: @challenge.charity, user_id: @challenge.low_score.user.id))%> %>
-        <%= link_to("Fulfill Donation Pledge!", new_pledge_url(challenge_id: @challenge.id))%>
-      <% end %>
+      <div class="row row-cols-4">
+        <div class="row">
+          <div class="col">
+            <h4>Challenge Loser:</h4>
+            <h2 class="text-danger" ><%=@challenge.low_score.user.username%></h2>
+          </div> 
+        </div>
+        <div class="row">
+          <h4>Please donate <div class="text-info">$<%=@challenge.pledge_amount%>.00</div> </h4>
+        </div>
+    
+      <div class="row">
+        <a href=<%=@challenge.charity.url%> class="card-text">
+          <% if @challenge.charity.photo.attached?%>
+            <img src="<%=(url_for(@challenge.charity.photo))%>"  alt="charity-photo" style="height: 100px; width:100px; margin-right:8px;" class="rounded-circle img-thumbnail">
+          <% end %>
+        </a>
+      </div>
+     
+            <div class="row" style="height: 50px">
+          <% if challenge_loser(@challenge)%>
+              <small>Click on the thumbnail to donate. Screenshot your reciept and upload it on the next page </small>
+              <%= link_to("Fulfill Donation Pledge!", new_pledge_url(challenge_id: @challenge.id), {:class=>"btn btn-warning btn-lg btn-block"})%>
+          <% else %>
+                <div class="row">
+                <h4>Waiting on...    </h4>
+                
+                <h4><div class="text-danger">
+                <br>
+                  <%=@challenge.low_score.user.username%></div></h4>
+                
+              </div>
+          <% end %>
+            </div>
+      </div>
     </div>
  </div>   
 </div>
+    <%end%>
 <% else %>
 <div class="row mx-auto">
 <div class="col-md"style="margin-top:20px;">
@@ -174,9 +202,9 @@
 <%# <% if can? :manage, @challenge%>
   <div class="card-footer">
   <% if !challenge_over?(@challenge)%>
-  <% if my_tracker?(@challenge)%>
+    <% if my_tracker?(@challenge)%>
       <%= link_to("Create your Tracker", new_tracker_path(challenge_id: @challenge.id)) %>
-   <% end %>
+    <% end %>
    <%end%>
   </div>
   <%# <% end %> 
@@ -190,10 +218,10 @@
 <% if can? :manage, @challenge %>
   <div class="row">
     <div class="col-sm-6">
-      <div class="card" style="margin: 15px; padding:15px; margin-left:15px;">
+      <div class="card bg-dark w-25 shadow-lg" style="margin: 15px; padding:15px; margin-left:15px;">
         <h4>
-          <%= link_to("Edit", edit_challenge_path(@challenge)) %> |
-          <%= link_to("Delete", @challenge, method: :delete, data: { confirm: 'Are you sure?' }) %>
+          <%= link_to("Edit", edit_challenge_path(@challenge), class: "btn btn-warning") %> 
+          <%= link_to("Delete", @challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger") %>
         </h4>
       </div>
     </div>
