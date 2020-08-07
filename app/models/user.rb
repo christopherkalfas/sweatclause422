@@ -28,5 +28,11 @@ class User < ApplicationRecord
         self.all.select {|user| user.admin == false}
     end
 
+    def pledges_total
+        self.pledges.collect {|pledge| pledge.amount}.reduce()
+    end
+
+ 
+
 
 end

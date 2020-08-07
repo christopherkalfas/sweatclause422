@@ -3,4 +3,7 @@
     <%= pledge.charity.name%>
     <%= pledge.challenge.name%>
    <p> Donated: $<%= pledge.amount%>.00</p>
+   <% if pledge.donation_image.attached?%>
+   <image src="<%=(url_for(pledge.donation_image))%>" style="height: 200px; width: 200px;">
+   <% end %>
 <% end %>

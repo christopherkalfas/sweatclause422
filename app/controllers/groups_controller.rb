@@ -6,6 +6,7 @@ class GroupsController < ApplicationController
 
     def show
         @group = Group.find(params[:id])
+        @group.all_pledges
     end
 
     def new

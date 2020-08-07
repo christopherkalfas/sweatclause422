@@ -53,7 +53,7 @@
       <% @user.pledges.each do |pledge|%>
       <table class='table table-striped rounded shadow-md'>
         <thead class="bg-dark text-light ">
-          <th>Chairty</th>
+          <th>Charity</th>
           <th>Donation</th>
           <th>Group</th>
           <th>Challenge</th>
@@ -68,7 +68,7 @@
               $<%=pledge.amount%>.00
             </td>
             <td>
-              <%=pledge.group.name%>
+              <%=pledge.challenge.group.name%>
             </td>
             <td>
               <%=pledge.challenge.name%>

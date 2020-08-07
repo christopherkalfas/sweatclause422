@@ -1,10 +1,10 @@
 <%= form_for @pledge do |f| %>
-<h2><%=@pledge.challenge%></h2>
+<h2><%=@pledge.challenge.name%></h2>
 <%= f.label :donation_image, "Upload" %>
 <%= f.file_field :donation_image %>
 <%= f.label :amount, "Donation Amount: $" %>
 <%= f.number_field :amount %>
 <%= f.hidden_field :challenge_id %>
-<%= f.collection_select(:charity_id, Charity.all, :id, :name) %>
+<%= f.hidden_field :charity_id %>
 <%= f.submit %>
 <% end %>

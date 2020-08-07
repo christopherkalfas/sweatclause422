@@ -6,7 +6,7 @@
   </h2>
   <div class="row">
   <h6  class="col-8" style="margin:8px;">Commissioner: <em><%=@group.owner.username%></em></h6>
-  <h6 class="col-3" style="margin:8px;">Donation Total:<em> $<%=@group.donation_total_value%>.00 </em></h6>
+   <h6 class="col-3" style="margin:8px;">Donation Total:<em> $<%=@group.all_pledges%>.00 </em></h6>
 </div>
 
 <div >
@@ -47,7 +47,7 @@
       <thead>
         <th class="card-title bg-dark text-light rounded">Charities</th>
       </thead>
-      <% @group.charities.each do |charity| %>
+      <% @group.uniq_charities.each do |charity| %>
         <tr class="card-text">
           <td><a href=<%= charity.url%>>
             <%= charity.name%>
