@@ -1,0 +1,25 @@
+<div class="card shadow-lg" style="width: 28rem;">
+    <img class="card-img-top" src="<%=(url_for(@pledge.donation_image))%>" alt="donation-img">
+    <div class="card-body bg-light">
+
+        <h5 class="card-title text-info"><%= @pledge.charity.name%></h5>
+        <p class="card-text">
+            Donated by:<div class="text-warning"> <%=@pledge.user.username%></div> of <%=link_to(@pledge.challenge.group.name, group_path(@pledge.challenge.group.id))%>
+        </p> 
+        <p>
+            Challenge: <%=@pledge.challenge.name%> - <%=@pledge.challenge.activity_name%> 
+        </p> 
+        <p>   
+            <div class="text-info">$<%=@pledge.amount%>.00</div> Date Donated: <%=@pledge.challenge.end_date.strftime("%a %b %d")%>
+            <% if @pledge.donated%>
+                <div class="text-success">
+                    Complete
+                </div>
+            <% else %>
+                <div class="text-warning">
+                    Incomplete
+                </div>
+            <% end %>
+        </p>
+    </div>
+</div>
