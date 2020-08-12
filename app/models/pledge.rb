@@ -42,6 +42,9 @@ class Pledge < ApplicationRecord
         self.challenge.charity.url
     end 
 
+    def self.donation_total
+        Pledge.all.collect{|p| p.amount}.reduce()
+    end 
 
 
 end

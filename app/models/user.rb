@@ -28,7 +28,9 @@ class User < ApplicationRecord
         self.all.select {|user| user.admin == false}
     end
 
-    
+    def lifetime_donations
+        self.pledges.collect {|pledge| pledge.amount}.reduce()
+    end 
 
  
 

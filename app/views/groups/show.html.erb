@@ -5,8 +5,8 @@
     <%= @group.name %>
   </h2>
   <div class="row">
-  <h6  class="col-8" style="margin:8px;">Commissioner: <em><%=@group.owner.username%></em></h6>
-   <h6 class="col-3" style="margin:8px;">Donation Total:<em> $<%=@group.pledges_total%>.00 </em></h6>
+  <h6  class="col-8" style="margin:8px;">Commissioner: <em class="text-info"><%=@group.owner.username%></em></h6>
+   <h6 class="col-3" style="margin:8px;">Group Donation Total:<em class="text-info"> $<%=@group.pledges_total%>.00 </em></h6>
 </div>
 
 <div >
@@ -18,9 +18,9 @@
     <% @group.users.each do |user| %>
   <tr class="card-text">
     <% if user.profile_pic.attached?%>
-      <td><image src="<%=(url_for(user.profile_pic))%>" class="rounded-circle" style="height: 70px; width: 70px;"> <%= user.name %></td>
+      <td><img src="<%=(url_for(user.profile_pic))%>" class="rounded-circle" style="height: 70px; width: 70px;"> <%= user.username %></td>
       <% else %>
-      <td><%= user.name %></td>
+      <td><%= user.username %></td>
     <% end %>
   </tr>
       
@@ -38,7 +38,9 @@
         <tr class="card-text">
           <td><%= link_to(challenge.name, challenge_path(challenge)) %> 
             <% if challenge_over?(challenge) %>
-            Donated $<%=challenge.pledge_amount%>.00
+            | Donated: <span class="text-info">$<%=challenge.pledge_amount%>.00</span> |
+            Loser: <span class="text-danger"><%=challenge.low_score.user.username%></span> |
+            Winner: <span class="text-success"><%=challenge.high_score.user.username%></span>
             <% end %>
           </td>
         </tr>
@@ -75,27 +77,30 @@
         </div>
 
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
+      <div class="card-body" style="position: relative;">
         <div class="row row-cols-2">
-        <div class="col">
-          <h6><%= link_to("Add New Member", edit_group_url(@group)) %></h6>
+          <div class="col">
+            <h6><%= link_to("Add New Member", edit_group_url(@group)) %></h6>
+          </div>
+          <div class="col">
+            <h6><%=link_to("Add New Challenge", new_challenge_url(group_id: @group.id))%></h6>
+          </div>
         </div>
-        <div class="col">
-          <h6><%=link_to("Add New Challenge", new_challenge_url(group_id: @group.id))%></h6>
-        </div>
-        </div>
-        </div>
+      </div>
           <div class="card-footer">
-            <h6>Remove Member</h6>  
+            <div class="row">
+              <h6 style="text-align:center;">Remove Member: </h6>  
                 <% @group.memberships.each do |membership| %>
-                  <div>
+                  <div class="mx-3">
                       <%= button_to(membership.user.username, membership, class: "btn btn-danger m-1", method: :delete, data: {confirm: "Are you sure?"}) %>
                   </div>
-                <% end%>
+                <% end%>   
+                  <div class="card-text ml-8" style="position: absolute; right:20px;">
+                    <%= button_to("Destroy Group", @group, class: "btn btn-warning", method: :delete, data: { confirm: "Are you sure?"}) %>
+                  </div>
             </div>
-            <div class="card-text mt-2">
-              <%= button_to("Destroy Group", @group, class: "btn btn-warning", method: :delete, data: { confirm: "Are you sure?"}) %>
-            </div>
+          </div>
+        </div>
       </div>
     </div>
     </div>

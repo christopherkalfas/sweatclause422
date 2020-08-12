@@ -5,71 +5,77 @@
           style="text-shadow: 2px 2px 4px dark;"> 
           <%= @challenge.name %>
       </h2>
-        <div class="card-body">
+        <div class="card-body" style="background-color: #D8E3EB;" >
           <div class="row">
-            <div class="col-4">
-              <h5 class="card-title pb-2">
+           
+              <h5 class="card-subtitle p-3" style="text-align: center;">
                 <em>
                   <%= @challenge.start_date.strftime("%a %b #{@challenge.start_date.day.ordinalize}, %Y") %> -
                   <%= @challenge.end_date.strftime("%a %b #{@challenge.end_date.day.ordinalize},  %Y") %>
                 </em> 
               </h5>
             </div>
-            <div class="col-2">
-              <h5>Group: <%= link_to(@challenge.group.name, group_path(@challenge.group))%></h5>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6 rounded p-2" style="background-color: #DCDCDC;">
-              <h5 class="card-text">
-                <strong>Activity:</strong> <em class="text-info"><%= @challenge.activity_name %></em>
-              </h5>
 
-              <h5 class="card-text">
-                <strong>Reps:</strong>
-                <em class="text-info"><%= @challenge.activity_reps %></em>
-              </h5>
-              <h6 class="card-title">
-                  Loser Donates to:
-                </h6>
-              <% if @challenge.charity.photo.attached?%>
-                <a href=<%=@challenge.charity.url%> class="card-text">
-                  <img src="<%=(url_for(@challenge.charity.photo))%>" class="rounded-circle"  alt="charity-photo" style="height: 100px; width:100px;">
-                </a>
-              <% else %>
-                <h5 class="card-text text-info">
-                  <%= @challenge.charity.name%>
-                </h5>
-              <% end %>
-                <h5 class="card-text">Donation Amount: $<%=@challenge.pledge_amount%>.00 USD</h5>
-                <p class="card-text">
-                  <em><%= @challenge.charity.description %></em>
-                </p>
+          
+          <div class="row">
+            <div class="col-4 rounded">
+              <div class="card p-2 m-2 shadow-lg" style="background-color: #ACC2D2;">
+                <h3 class="card-text m-2">
+                  <strong>Group:</strong> <%= link_to(@challenge.group.name, group_path(@challenge.group))%></h3>
+                <h3 class="card-text m-2">
+                  <strong>Activity: </strong><em class="text-info"><%= @challenge.activity_reps %> <%= @challenge.activity_name %></em>
+                </h3>
+              </div>
+            </div>
+
+            <div class="col-3" >
+              <div class="card p-2 m-2 shadow-lg" style="background-color: #ACC2D2;">
+                <h6 class="card-title">
+                    Loser Donates to:
+                  </h6>
+                <% if @challenge.charity.photo.attached?%>
+                  <a href=<%=@challenge.charity.url%> class="card-text">
+                    <img src="<%=(url_for(@challenge.charity.photo))%>" class="rounded-circle"  alt="charity-photo" style="height: 100px; width:100px;">
+                  </a>
+                <% else %>
+                  <h5 class="card-text text-info">
+                    <%= @challenge.charity.name%>
+                  </h5>
+                <% end %>
+                  <h5 class="card-text">Donation Amount: $<%=@challenge.pledge_amount%>.00 USD</h5>
+                  <p class="card-text">
+                    <em><%= @challenge.charity.description %></em>
+                  </p>
+              </div>
             </div>
 
 
             <div class="col-4">
-            <div class="card p-2" style="background-color: #DCDCDC;">
-              <h5 class="card-title text-success">Leader</h5>
+            <div class="card p-2 m-2 shadow-lg" style="background-color: #ACC2D2;">
+              <h3 class="card-title text-success">Leader</h3>
                 <div class="card-text pb-3">
                 <% if @challenge.trackers.blank?%>
                   <h6>Apparently, none of you...</h6>
                 <%else%>
-                  <%= @challenge.high_score.user.username %> - <%= @challenge.high_score.total_reps %> reps
-                  <p>
+                  <h4>
+                    <em class="text-success"><%= @challenge.high_score.user.username %></em> - <%= @challenge.high_score.total_reps %> reps
+                  </h4>
+                  <h5>
                     <%= @challenge.activity_reps - @challenge.high_score.total_reps %> reps to reach goal
-                  </p>
+                  </h5>
                 <%end%>
                 </div>
-              <h5 class="card-title text-danger border-top border-dark pt-1">Laziest</h5>
+              <h4 class="card-title text-danger border-top border-dark pt-1">Laziest</h4>
                 <div class="card-text">
                 <% if @challenge.trackers.blank?%>
                   <h6>Everyone in <%=@challenge.group.name%></h6>
                 <%else%>
-                  <%= @challenge.low_score.user.username %> - <%= @challenge.low_score.total_reps %> reps
-                  <p>
+                  <h4>
+                <em class="text-danger"><%= @challenge.low_score.user.username %></em> - <%= @challenge.low_score.total_reps %> reps
+                  </h4>
+                  <h5>
                     <%= @challenge.activity_reps - @challenge.low_score.total_reps %> reps to reach goal
-                  </p>
+                  </h5>
                 <%end%>
               </div>  
               </div>
@@ -86,11 +92,11 @@
 <% if challenge_over?(@challenge)%>
 <div class="card shadow-lg mt-3" style="border: 1px; text-align: center; position:relative;">  
     <%if @challenge.my_pledge_complete?%>
-  <div class="card-header bg-success text-light">
-      <h2>Donation Complete!</h2>
-      <% if @challenge.pledge.donation_image.attached?%>
-      <img src="<%=(url_for(@challenge.pledge.donation_image))%>" alt="donation-img">
-      <%end%>
+      <div class="card-header bg-success text-light">
+          <h2>Donation Complete!</h2>
+          <% if @challenge.pledge.donation_image.attached?%>
+            <%= link_to(image_tag(@challenge.pledge.donation_image), pledges_path(@challenge.pledge.id))%>
+          <%end%>
     <% else %>
     <div class="card-header bg-warning">
       <h2>Challenge Donation Pending</h2>
@@ -149,7 +155,7 @@
   </h2>
   </tr>
 
-    <thead>
+    <thead style="background-color: #D8E3EB;">
       <th scope="col">Member</th>
       <th scope="col"><%= @challenge.start_date.strftime("%a #{@challenge.start_date.day.ordinalize}")%></th>
       <th scope="col"><%= @challenge.start_date.next_day(1).strftime("%a #{@challenge.start_date.next_day(1).day.ordinalize}")%></th>
@@ -174,7 +180,7 @@
     <% @challenge.rank_trackers.each do |track| %>
       <tr>
         <% if track.user.profile_pic.attached?%>
-      <td><image src="<%=(url_for(track.user.profile_pic))%>" class="rounded-circle" style="height: 40px; width: 40px;">
+      <td><img src="<%=(url_for(track.user.profile_pic))%>" class="rounded-circle" style="height: 40px; width: 40px;">
           <%= track.user.username %>
       </td>
         <% else %>
@@ -200,7 +206,7 @@
   <% end %>
  
 <%# <% if can? :manage, @challenge%>
-  <div class="card-footer">
+  <div class="card-footer" style="background-color: #D8E3EB;">
   <% if !challenge_over?(@challenge)%>
     <% if my_tracker?(@challenge)%>
       <%= link_to("Create your Tracker", new_tracker_path(challenge_id: @challenge.id)) %>
@@ -218,8 +224,8 @@
 <% if can? :manage, @challenge %>
   <div class="row">
     <div class="col-sm-6">
-      <div class="card bg-dark w-25 shadow-lg" style="margin: 15px; padding:15px; margin-left:15px;">
-        <h4>
+      <div class="card bg-dark w-auto shadow-lg" style="margin: 15px; padding:15px; margin-left:15px;">
+        <h4 style="text-align: center;">
           <%= link_to("Edit", edit_challenge_path(@challenge), class: "btn btn-warning") %> 
           <%= link_to("Delete", @challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger") %>
         </h4>

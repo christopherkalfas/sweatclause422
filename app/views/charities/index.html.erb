@@ -18,6 +18,9 @@
             <%= charity.name %>
         </h5>
         <p class="card-text">
+           Donation Total:<em class="text-info"> $<%= charity.total_donations %>.00</em>
+        </p>
+        <p class="card-text">
            <em> <%= charity.description %></em>
         </p>
         <a href=<%=charity.url%> class="card-text">
@@ -35,7 +38,7 @@
 </div>
 <% if logged_in? %>
 <div class="card mx-auto bg-light text-dark shadow-lg p-2" style="width: 200px; text-align: center;">
-    <h5><%= link_to("Add a New Charity", new_charity_path, class: "text-success") %></h5>
+    <h5><%= link_to("Add a New Charity", new_charity_path, class: "text-primary") %></h5>
 </div>
 <% end %>
 

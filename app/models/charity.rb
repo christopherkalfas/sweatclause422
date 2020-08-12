@@ -7,5 +7,7 @@ class Charity < ApplicationRecord
     has_one_attached :photo
 
 
-
+    def total_donations
+        Pledge.all.select {|pledge| pledge.charity_id == self.id}.collect{|pled| pled.amount}.reduce()
+    end 
 end

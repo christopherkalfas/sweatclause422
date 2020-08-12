@@ -1,54 +1,64 @@
 <div class="container-md shadow-lg rounded" 
   style="background-color:#e9ecef;
     padding:8px;">
-  <h5>
-    Welcome back, 
-  </h5>
-  
-  <h3>
-    <%= @user.name %>!
-  </h3>
+    <div class="container-fluid">
+      
+        <div class="row pt-2">
+          <div class="col">
+            <h5>Welcome back,</h5>
+            <h3 class="text-success">
+              <%= @user.name %>!
+            </h3>
 
-  <h5>
-    <strong>Username:</strong>
-    <%= @user.username %>
-  </h5>
-
-  <% if @user.profile_pic.attached?%>
-  <image src="<%=(url_for(@user.profile_pic))%>" class="img-thumbnail rounded-circle" style="height: 100px; width: 100px;">
-  <% end %>
-  
-    <h5>
-      <strong>Group:</strong>
-    </h5>
-      <ul class="list-group-fluid w-50" >
-      <% @user.groups.each do |group| %>
-        <li class="list-group-item my-2 rounded shadow-sm"> 
-          <h5>
-            <%= link_to(group.name, group_path(group)) %>
-          </h5>
-        </li>
-      <% end %>
-      </ul>
-
-        <h4>My Active Challenge(s):</h4>
-      <ul class="list-group-fluid w-50" >
-      <% @user.challenges.each do |challenge| %>
-          <li class="list-group-item my-2 rounded shadow-sm"> 
             <h5>
-              <%= link_to(challenge.name, challenge_path(challenge)) %> - 
-              <em>
-                <%= challenge.charity.name%>
-              </em>
+              <strong class="text-info">Username:</strong>
+              <%= @user.username %>
             </h5>
-            <h6>
-            <%= challenge.activity_reps %>
-            <%= challenge.activity_name %>, completed by  
-            <%= challenge.end_date.strftime("%a %b #{challenge.end_date.day.ordinalize}, %Y")%>
-            </h6>
-          </li>
-      <% end %>
-      </ul>
+
+            <% if @user.profile_pic.attached?%>
+            <image src="<%=(url_for(@user.profile_pic))%>" class="img-thumbnail rounded-circle mb-2" style="height: 100px; width: 100px;">
+            <% end %>
+            <% if @user.lifetime_donations != nil%>
+            <p><strong class="text-info">Lifetime Donations:</strong> $<%=@user.lifetime_donations%>.00</p>
+            <% end %>
+            <p><strong class="text-info">Challenges Completed:</strong> <%=@user.challenges.count()%></p>
+          </div>
+          <div class="col">
+              <ul class="list-group-fluid w-50" >
+            <h4>
+              <strong class="text-info">Group(s):</strong>
+            </h4>
+              <% @user.groups.each do |group| %>
+                <li class="list-group-item my-2 rounded shadow-sm"> 
+                  <h5>
+                    <%= link_to(group.name, group_path(group)) %>
+                  </h5>
+                </li>
+              <% end %>
+              </ul>
+              <ul class="list-group-fluid w-75" >
+                <h4><strong class="text-info">My Active Challenge(s):</strong></h4>
+                  <% @user.challenges.each do |challenge| %>
+                      <li class="list-group-item my-2 rounded shadow-sm"> 
+                        <h5>
+                          <%= link_to(challenge.name, challenge_path(challenge)) %> - 
+                          <em>
+                            <%= challenge.charity.name%>
+                          </em>
+                        </h5>
+                        <h6>
+                        <%= challenge.activity_reps %>
+                        <%= challenge.activity_name %>, completed by  
+                        <%= challenge.end_date.strftime("%a %b #{challenge.end_date.day.ordinalize}, %Y")%>
+                        </h6>
+                      </li>
+                  <% end %>
+              </ul>
+          </div>
+        </div>
+      </div>
+      
+
 
       <% @user.pledges.each do |pledge|%>
       <table class='table table-striped rounded shadow-md'>
@@ -80,9 +90,11 @@
       <% end %>
         </tbody>
       </table>
-   <div class="card bg-dark w-25 shadow-lg" style="margin: 15px; padding:15px; margin-left:15px;"> 
-  <h5><%= link_to 'Edit', edit_user_path(@user), class: "btn btn-warning" %> |
-  <%= link_to 'Delete', @user, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%></h5>
+   <div class="card bg-dark w-auto shadow-lg" style="margin: 5px; padding:15px; margin-left:15px;"> 
+    <h5 style="text-align: center;">
+      <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-warning" %> |
+      <%= link_to 'Delete', @user, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%>
+    </h5>
   </div>
 
 

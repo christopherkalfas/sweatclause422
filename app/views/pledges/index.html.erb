@@ -1,9 +1,22 @@
-<% @pledges.each do |pledge|%>
-    <%= pledge.user.username%>
-    <%= pledge.charity.name%>
-    <%= pledge.challenge.name%>
-   <p> Donated: $<%= pledge.amount%>.00</p>
-   <% if pledge.donation_image.attached?%>
-   <image src="<%=(url_for(pledge.donation_image))%>" style="height: 200px; width: 200px;">
-   <% end %>
-<% end %>
+<div class="container-fluid shadow-lg">
+    <table class="table table-striped">
+        <thead>
+            <tr class="bg-dark text-light">
+                <th scope="col">User</th>
+                <th scope="col">Challenge</th>
+                <th scope="col">Charity</th>
+                <th scope="col">Donation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @pledges.each do |pledge|%>
+                <tr class="bg-light">
+                    <td scope="row"><%= pledge.user.username%></td>
+                    <td><%= pledge.charity.name%></td>
+                    <td><%= pledge.challenge.name%></td>
+                    <td>Donated: $<%= pledge.amount%>.00</td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

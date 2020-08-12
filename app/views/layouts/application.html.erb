@@ -11,9 +11,9 @@
     <%= favicon_link_tag asset_path('favicon-32x32.png')%>
   </head>
 
-  <body class="container-fluid" style="background-color:#9cb3c9;">
+  <body class="container-fluid" style="background-color:#557a95;">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-top" style="text-shadow: 1px 1px 1px #000; font-size:28px;">
-  <a class="navbar-brand" href="/">Sweat Clause</a>
+  <a class="navbar-brand" href="/">SweatClause</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -22,6 +22,7 @@
       <% if logged_in? %>
         <a class="nav-item nav-link" href="/profile">My Profile</a>
         <a class="nav-item nav-link" href="/logout">Log Out</a>
+        <a class="nav-item nav-link" href="/pledges">Pledges</a>
       <% else %>
         <a class="nav-item nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
       <% end %>
@@ -39,10 +40,15 @@
 
 <div class="jumbotron jumbotron-fluid rounded-bottom" style="padding-top: 22px; padding-bottom: 22px;">
   <div class="container" style="position:relative;">
-    <h1 class="display-5">Sweat Clause</h1>
-    <p class="lead"><em>Get in Shape or Donate</em></p>
+    <h1 class="display-5" style="color: #7395ae;">SweatClause</h1>
+    <p class="lead"style="color:#5d5c61;"><em>Get in Shape or Donate</em></p>
+    <% if Pledge.all %>
+      <p class="lead" style="color:#5d5c61;">
+      Donation Total: $<%=Pledge.donation_total%>.00
+      </p>
+    <% end %>  
     <% if logged_in? %>
-    <p class="lead" style="position: absolute; bottom: 2px; right:20px;">
+    <p class="lead" style="position: absolute; bottom: 2px; right:20px; color:#5d5c61;">
     Signed in as <strong><%= current_user.username %></strong>
     </p>
     <% end %>
