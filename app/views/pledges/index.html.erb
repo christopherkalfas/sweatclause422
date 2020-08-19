@@ -1,8 +1,9 @@
-<div class="container-fluid shadow-lg">
-    <table class="table table-striped">
+<div class="container-fluid">
+    <table class="table table-striped shadow-lg rounded">
         <thead>
             <tr class="bg-dark text-light">
                 <th scope="col">User</th>
+                <th scope="col">Group</th>
                 <th scope="col">Challenge</th>
                 <th scope="col">Charity</th>
                 <th scope="col">Donation</th>
@@ -12,6 +13,7 @@
             <% @pledges.each do |pledge|%>
                 <tr class="bg-light">
                     <td scope="row"><%= pledge.user.username%></td>
+                    <td><%= pledge.challenge.group.name%></td>
                     <td><%= pledge.charity.name%></td>
                     <td><%= pledge.challenge.name%></td>
                     <td>Donated: $<%= pledge.amount%>.00</td>

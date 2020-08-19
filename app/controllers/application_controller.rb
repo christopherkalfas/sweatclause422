@@ -55,7 +55,6 @@ class ApplicationController < ActionController::Base
         current_user == challenge.low_score.user
       end
 
-   
 
       helper_method :current_user
       helper_method :current_user?
