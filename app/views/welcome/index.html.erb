@@ -1,36 +1,44 @@
-<div class="card m-4 p-2 bg-secondary">
-    <div class="card-title bg-light text-info rounded w-25 align-self-center" >
-        <h3 style="text-align: center;">UPDATE - <em>Mid-Aug 2020</em></h3>
-    </div>
-    <div class="card-body">
-        <div class="card-text rounded bg-light text-dark p-2">
-            <h5>Hey everybody! </h5>
-            <h6>
-            There are a lot of cool updates to SweatClause thanks to your feedback! The only down side is I needed to destroy your user profile to get it to work. I didn't want to recreate your profile on my end for security reasons. 
-            </h6>
-            <h5 class="text-info">Updates Mid Aug</h5>
-            <p>- Pledges have been added as part of a challenge. Now Challenege will accept a donation amount.</p>
-            <p>- When a challenge is over, the challenge loser will be assigned.</p>
-            <p>- Then, a challenge loser will have to complete the pledge by donated to the Challenge Charity and upload a copy of the donation receipt.</p>
-            <p>- Also - User can upload a profile picture.</p>
-            <p>- Also - Charities can upload a picture of their logo.</p>
-            --------------------------------------------------------------------------------------------------------------
-            <h5 class="text-info">Older Updates</h5>
-            <p>- Challenge members NO longer need to create their own tracker for a challenge.</>
-            <p>- Email Support for Sign up confirmation and for forgotten passwords. CHECK your spam if you do not see it.</p>
-            <p>- Users can NOT join an existing group. The group commissioner is the only user who can do that.</p>
-            <p>- Also, a group now has a commissioner!</p>
-            <p>- The user who creates the group is the commiss'!</p>
-            <p>- Users can create and be added to mulitple groups.</p>
-            <p>- Challenges ONLY last one week from the start date.</p>
-            <p>- The Trackers now format to the actually days of the Challenge. They Update too. That's not important to you as a user but it was tough as heck for me. So I figured I'd tell you anyway.</p>
-            <p>- Helpful flash messages</p>
-            <br>
-            <div class="card-footer">
-                <p>If you encounter any bugs...please let me know. Don't assume I'll find it on my own. </p>
-                <%= mail_to "christopherkalfas22@gmail.com" do %>
-                    <strong class="text-success">Email me</strong>
-                <% end %>
+<div id="accordion" style="margin-top: 15px;" >
+    <div class="card m-4 p-2 bg-secondary">
+        <div class="card-title bg-light text-info rounded w-25 align-self-center" id="headingOne" >
+            <h2 style="text-align: center;">
+                <button class="btn btn-link text-info" style="text-decoration:none;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    UPDATE: <em>Mid-Aug 2020</em>
+                </button>
+            </h2>
+        </div>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                <div class="card-text rounded bg-light text-dark p-2">
+                    <h5>Hey everybody! </h5>
+                    <h6>
+                    There are a lot of cool updates to SweatClause thanks to your feedback!  
+                    </h6>
+                    <h5 class="text-info">Updates Mid Aug</h5>
+                    <p>- Pledges have been added as part of a challenge. Now Challenege will accept a donation amount.</p>
+                    <p>- When a challenge is over, the challenge loser will be assigned.</p>
+                    <p>- Then, a challenge loser will have to complete the pledge by donated to the Challenge Charity and upload a copy of the donation receipt.</p>
+                    <p>- Also - User can upload a profile picture.</p>
+                    <p>- Also - Charities can upload a picture of their logo.</p>
+                    --------------------------------------------------------------------------------------------------------------
+                    <h5 class="text-info">Older Updates</h5>
+                    <p>- Challenge members NO longer need to create their own tracker for a challenge.</>
+                    <p>- Email Support for Sign up confirmation and for forgotten passwords. CHECK your spam if you do not see it.</p>
+                    <p>- Users can NOT join an existing group. The group commissioner is the only user who can do that.</p>
+                    <p>- Also, a group now has a commissioner!</p>
+                    <p>- The user who creates the group is the commiss'!</p>
+                    <p>- Users can create and be added to mulitple groups.</p>
+                    <p>- Challenges ONLY last one week from the start date.</p>
+                    <p>- The Trackers now format to the actually days of the Challenge. They Update too. That's not important to you as a user but it was tough as heck for me. So I figured I'd tell you anyway.</p>
+                    <p>- Helpful flash messages</p>
+                    <br>
+                    <div class="card-footer">
+                        <p>If you encounter any bugs...please let me know. Don't assume I'll find it on my own. </p>
+                        <%= mail_to "christopherkalfas22@gmail.com" do %>
+                            <strong class="text-success">Email me</strong>
+                        <% end %>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

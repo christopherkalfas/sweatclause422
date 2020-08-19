@@ -26,7 +26,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'cancancan', '~> 3.1'
 
 gem 'aws-sdk-s3', require: false
-
+gem 'font_awesome5_rails';
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'jquery-rails'

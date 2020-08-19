@@ -38,7 +38,7 @@
 </nav>
 
 
-<div class="jumbotron jumbotron-fluid rounded-bottom" style="padding-top: 22px; padding-bottom: 22px;">
+<div class="jumbotron jumbotron-fluid rounded-bottom" style="padding-top: 22px; padding-bottom: 2px;">
   <div class="container" style="position:relative;">
     <h1 class="display-5" style="color: #7395ae;">SweatClause</h1>
     <p class="lead"style="color:#5d5c61;"><em>Get in Shape or Donate</em></p>
@@ -46,12 +46,18 @@
       <p class="lead" style="color:#5d5c61;">
       Donation Total: $<%=Pledge.donation_total%>.00
       </p>
-    <% end %>  
+    <% end %> 
     <% if logged_in? %>
     <p class="lead" style="position: absolute; bottom: 2px; right:20px; color:#5d5c61;">
     Signed in as <strong><%= current_user.username %></strong>
     </p>
     <% end %>
+    </div>
+    <div class="card-footer pr-3">
+      <%= link_to("GitHub", "https://github.com/christopherkalfas/sweatclause422", target: :_blank) %> |
+      <%= link_to("LinkedIn", "https://www.linkedin.com/in/christopherkalfas", target: :_blank) %> |
+      <%= link_to("Portfolio", "https://chriskalfas.com", target: :_blank) %>
+    </div>
   </div>
 </div>
 <% flash.each do |key, value| %>
