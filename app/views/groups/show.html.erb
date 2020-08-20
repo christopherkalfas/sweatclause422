@@ -80,10 +80,10 @@
       <div class="card-body" style="position: relative;">
         <div class="row row-cols-2">
           <div class="col">
-            <h6><%= link_to("Add New Member", edit_group_url(@group)) %></h6>
+            <h6><%= link_to("Add New Member", edit_group_url(@group), class: "btn member-btns") %></h6>
           </div>
           <div class="col">
-            <h6><%=link_to("Add New Challenge", new_challenge_url(group_id: @group.id))%></h6>
+            <h6><%=link_to("Add New Challenge", new_challenge_url(group_id: @group.id), class: "btn member-btns")%></h6>
           </div>
         </div>
       </div>

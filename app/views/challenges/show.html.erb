@@ -206,8 +206,8 @@
   <% end %>
  
 <%# <% if can? :manage, @challenge%>
-  <div class="card-footer" style="background-color: #D8E3EB;">
   <% if !challenge_over?(@challenge)%>
+  <div class="card-footer" style="background-color: #D8E3EB;">
     <% if my_tracker?(@challenge)%>
       <%= link_to("Create your Tracker", new_tracker_path(challenge_id: @challenge.id)) %>
     <% end %>
@@ -224,7 +224,7 @@
 <% if can? :manage, @challenge %>
   <div class="row">
     <div class="col-sm-6">
-      <div class="card bg-dark w-auto shadow-lg" style="margin: 15px; padding:15px; margin-left:15px;">
+      <div class="card bg-dark w-25 shadow-lg p-2" style="margin: 15px; margin-left:15px;">
         <h4 style="text-align: center;">
           <%= link_to("Edit", edit_challenge_path(@challenge), class: "btn btn-warning") %> 
           <%= link_to("Delete", @challenge, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger") %>

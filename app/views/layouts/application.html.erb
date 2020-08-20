@@ -53,11 +53,7 @@
     </p>
     <% end %>
     </div>
-    <div class="card-footer pr-3">
-      <%= link_to("GitHub", "https://github.com/christopherkalfas/sweatclause422", target: :_blank) %> |
-      <%= link_to("LinkedIn", "https://www.linkedin.com/in/christopherkalfas", target: :_blank) %> |
-      <%= link_to("Portfolio", "https://chriskalfas.com", target: :_blank) %>
-    </div>
+    
   </div>
 </div>
 <% flash.each do |key, value| %>
@@ -68,7 +64,13 @@
 
 
   </div>
+ 
 </div>
     <%= yield %>
+    <div class="container-fluid p-2 my-4 w-25 rounded shadow-lg fixed-bottom" style="background-color: #ACC2D2; text-align:center;">
+      <%= link_to("GitHub", "https://github.com/christopherkalfas/sweatclause422", target: :_blank, class: "ext-link") %> |
+      <%= link_to("LinkedIn", "https://www.linkedin.com/in/christopherkalfas", target: :_blank, class: "ext-link") %> |
+      <%= link_to("Portfolio", "https://chriskalfas.com", target: :_blank, class: "ext-link") %>
+    </div>
   </body>
 </html>
